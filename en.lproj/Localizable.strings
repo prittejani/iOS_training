@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Demo_1
+
+  Created by iMac on 30/04/24.
+  
+*/
+"SignOut" = "SignOut";
+"Paragraph" = "As we have discussed for the label, we can also customize the text field by giving attributes. There are scenarios where we might need to configure the keyboard as well, for example, to restrict the user from entering the numbers only. Textfield uses the target action mechanism and a delegate object to report changes made during editing.";

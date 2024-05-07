@@ -1,0 +1,81 @@
+
+/* Class = "UINavigationItem"; title = "Week wise demo"; ObjectID = "02S-xW-Iay"; */
+"02S-xW-Iay.title" = "Week wise demo";
+
+/* Class = "UINavigationItem"; title = "Week 1"; ObjectID = "1eY-nT-yaF"; */
+"1eY-nT-yaF.title" = "Week 1";
+
+/* Class = "UILabel"; text = "You navigate second screen"; ObjectID = "4Sk-ld-BFg"; */
+"4Sk-ld-BFg.text" = "You navigate second screen";
+
+/* Class = "UIButton"; configuration.title = "Week 5"; ObjectID = "A81-xw-Il0"; */
+"A81-xw-Il0.configuration.title" = "Week 5";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "A81-xw-Il0"; */
+"A81-xw-Il0.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "FIj-qZ-myh"; */
+"FIj-qZ-myh.placeholder" = "Name";
+
+/* Class = "UIButton"; configuration.title = "Week 6"; ObjectID = "LOq-qx-wMb"; */
+"LOq-qx-wMb.configuration.title" = "Week 6";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "LOq-qx-wMb"; */
+"LOq-qx-wMb.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "POP"; ObjectID = "PbJ-wf-RnJ"; */
+"PbJ-wf-RnJ.configuration.title" = "POP";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PbJ-wf-RnJ"; */
+"PbJ-wf-RnJ.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "QDL-Wz-DOS"; */
+"QDL-Wz-DOS.title" = "Item";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "UOb-w8-Vf5"; */
+"UOb-w8-Vf5.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "Login with Google"; ObjectID = "adL-GQ-C3P"; */
+"adL-GQ-C3P.configuration.title" = "Login with Google";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "adL-GQ-C3P"; */
+"adL-GQ-C3P.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Week 3"; ObjectID = "bE4-kB-JDJ"; */
+"bE4-kB-JDJ.configuration.title" = "Week 3";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "bE4-kB-JDJ"; */
+"bE4-kB-JDJ.normalTitle" = "Button";
+
+/* Class = "UISegmentedControl"; eu3-C3-dgP.segmentTitles[0] = "First"; ObjectID = "eu3-C3-dgP"; */
+"eu3-C3-dgP.segmentTitles[0]" = "First";
+
+/* Class = "UISegmentedControl"; eu3-C3-dgP.segmentTitles[1] = "Second"; ObjectID = "eu3-C3-dgP"; */
+"eu3-C3-dgP.segmentTitles[1]" = "Second";
+
+/* Class = "UIButton"; configuration.title = "Week 1"; ObjectID = "gId-67-miG"; */
+"gId-67-miG.configuration.title" = "Week 1";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gId-67-miG"; */
+"gId-67-miG.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Login with Apple"; ObjectID = "iZp-yP-6WX"; */
+"iZp-yP-6WX.configuration.title" = "Login with Apple";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "iZp-yP-6WX"; */
+"iZp-yP-6WX.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Week 2"; ObjectID = "qHX-Vy-3GA"; */
+"qHX-Vy-3GA.configuration.title" = "Week 2";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "qHX-Vy-3GA"; */
+"qHX-Vy-3GA.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "OK"; ObjectID = "vuS-Ru-bjc"; */
+"vuS-Ru-bjc.configuration.title" = "OK";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "vuS-Ru-bjc"; */
+"vuS-Ru-bjc.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wVA-Wk-HsP"; */
+"wVA-Wk-HsP.text" = "Label";

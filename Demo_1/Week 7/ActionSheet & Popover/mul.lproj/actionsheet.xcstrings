@@ -1,0 +1,342 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "3ME-9u-ey2.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Bottom Sheet\"; ObjectID = \"3ME-9u-ey2\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bottom Sheet"
+          }
+        }
+      }
+    },
+    "3ME-9u-ey2.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"3ME-9u-ey2\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "4Mw-BX-owO.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"4Mw-BX-owO\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
+    "5uT-j1-LKL.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Popover\"; ObjectID = \"5uT-j1-LKL\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Popover"
+          }
+        }
+      }
+    },
+    "5uT-j1-LKL.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"5uT-j1-LKL\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "22i-bI-1mT.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"View 3\"; ObjectID = \"22i-bI-1mT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View 3"
+          }
+        }
+      }
+    },
+    "B6N-b2-T0t.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"OK\"; ObjectID = \"B6N-b2-T0t\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "B6N-b2-T0t.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"B6N-b2-T0t\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "cta-ZE-pi6.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Actionsheet & Popover\"; ObjectID = \"cta-ZE-pi6\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Actionsheet & Popover"
+          }
+        }
+      }
+    },
+    "cta-ZE-pi6.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"cta-ZE-pi6\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "FJa-9j-08Z.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Dismiss\"; ObjectID = \"FJa-9j-08Z\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dismiss"
+          }
+        }
+      }
+    },
+    "FJa-9j-08Z.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"FJa-9j-08Z\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "gef-jd-P06.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Popup\"; ObjectID = \"gef-jd-P06\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Popup"
+          }
+        }
+      }
+    },
+    "gef-jd-P06.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"gef-jd-P06\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "GFn-53-BVN.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Awesome!\"; ObjectID = \"GFn-53-BVN\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Awesome!"
+          }
+        }
+      }
+    },
+    "HZC-v1-Tec.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Potrait and Landscape Managment\"; ObjectID = \"HZC-v1-Tec\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Potrait and Landscape Managment"
+          }
+        }
+      }
+    },
+    "HZC-v1-Tec.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"HZC-v1-Tec\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "IuH-XD-DyE.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"As we have discussed for the label, we can also customize the text field by giving attributes. There are scenarios where we might need to configure the keyboard as well, for example, to restrict the user from entering the numbers only. Textfield uses the target action mechanism and a delegate object to report changes made during editing.\"; ObjectID = \"IuH-XD-DyE\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "As we have discussed for the label, we can also customize the text field by giving attributes. There are scenarios where we might need to configure the keyboard as well, for example, to restrict the user from entering the numbers only. Textfield uses the target action mechanism and a delegate object to report changes made during editing."
+          }
+        }
+      }
+    },
+    "IWO-wO-4C7.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"Select Language\"; ObjectID = \"IWO-wO-4C7\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Select Language"
+          }
+        }
+      }
+    },
+    "Jk7-A2-649.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Show ActionSheet\"; ObjectID = \"Jk7-A2-649\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show ActionSheet"
+          }
+        }
+      }
+    },
+    "Jk7-A2-649.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"Jk7-A2-649\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "kwH-C9-Tvn.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Cancel\"; ObjectID = \"kwH-C9-Tvn\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "kwH-C9-Tvn.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"kwH-C9-Tvn\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "Pqj-31-P5T.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Localization\"; ObjectID = \"Pqj-31-P5T\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Localization"
+          }
+        }
+      }
+    },
+    "Pqj-31-P5T.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"Pqj-31-P5T\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "qK5-Sz-XVa.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Your booking has been confirmed. Check your email for details\"; ObjectID = \"qK5-Sz-XVa\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your booking has been confirmed. Check your email for details"
+          }
+        }
+      }
+    },
+    "Un6-d0-Ijq.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"View 1\"; ObjectID = \"Un6-d0-Ijq\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View 1"
+          }
+        }
+      }
+    },
+    "WbB-jg-Cfx.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"View 2\"; ObjectID = \"WbB-jg-Cfx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View 2"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
