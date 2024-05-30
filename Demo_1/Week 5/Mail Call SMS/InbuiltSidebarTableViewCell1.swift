@@ -9,9 +9,13 @@ import UIKit
 
 class InbuiltSidebarTableViewCell1: UITableViewCell {
 
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        userImage.layer.cornerRadius = userImage.frame.size.width/2
+        userImage.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

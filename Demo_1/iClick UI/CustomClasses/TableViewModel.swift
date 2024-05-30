@@ -6,3 +6,8 @@
 //
 
 import Foundation
+    
+struct TableViewCellModel {
+    var category: String
+    var images: [CollectionViewCellModel]
+}

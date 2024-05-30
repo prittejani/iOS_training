@@ -53,7 +53,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
 
     @objc func largeImage (){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "CollectionViewController") as! CCollectionViewController
+        let vc = cameraVideo.instantiateViewController(withIdentifier: "CCollectionViewController") as! CCollectionViewController
         navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -61,8 +61,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
         setupAndStartCaptureSession()
-        
+      
     }
+   
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
           super.traitCollectionDidChange(previousTraitCollection)
           
@@ -142,13 +143,12 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @IBAction func videoButtonTapped(_ sender: UIButton) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "VideoViewController") as! VideoViewController
+        let vc = cameraVideo.instantiateViewController(withIdentifier: "CVideoViewController") as! CVideoViewController
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func onBackTapped(_ sender: UIBarButtonItem) {
-        let vc = self.navigationController?.viewControllers[1] as! CViewController
-        navigationController?.popToViewController(vc, animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func tourchTapped(_ sender: UIBarButtonItem) {

@@ -6,41 +6,22 @@
 //
 
 import UIKit
-import MessageUI
+import SideMenu
 
-class iOS_19ViewController: UIViewController, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate{
-
+class iOS_19ViewController: UIViewController, UINavigationControllerDelegate{
+    var menu:SideMenuNavigationController!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+                menu = SideMenuNavigationController(rootViewController: sideMenubar())
+                menu.leftSide = true
+                SideMenuManager.default.leftMenuNavigationController = menu
     }
     
-    @IBAction func sendMail(_ sender: UIButton) {
-        let vc = services.instantiateViewController(withIdentifier: "EmailViewController") as! EmailViewController
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func sendSMS(_ sender: UIButton) {
-        let vc = services.instantiateViewController(withIdentifier: "SMSViewController") as! SMSViewController
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func makeCall(_ sender: UIButton) {
-        let vc = services.instantiateViewController(withIdentifier: "CallViewController") as! CallViewController
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func shareOnWhatsapp(_ sender: UIButton) {
+    @IBAction func openSideBar(_ sender: UIBarButtonItem) {
         
-        let vc = services.instantiateViewController(withIdentifier: "WhatsappShareViewController") as! WhatsappShareViewController
-        navigationController?.pushViewController(vc, animated: true)
-        
+        self.present(menu, animated: true,completion: nil)
     }
-    
-    @IBAction func googleMap(_ sender: UIButton) {
-        let vc = Demo_1.googleMap.instantiateViewController(withIdentifier: "GoogleMapViewController") as! GoogleMapViewController
-        navigationController?.pushViewController(vc, animated: true)
+    @IBAction func onBackTapped(_ sender: UIBarButtonItem) {
+        navigationController?.popToRootViewController(animated: true)
     }
-    
 }

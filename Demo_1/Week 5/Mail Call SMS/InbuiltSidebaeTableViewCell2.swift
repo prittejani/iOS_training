@@ -9,6 +9,7 @@ import UIKit
 
 class InbuiltSidebaeTableViewCell2: UITableViewCell {
 
+    @IBOutlet weak var lblTask: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

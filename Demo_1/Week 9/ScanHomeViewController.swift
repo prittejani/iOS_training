@@ -9,21 +9,22 @@ import UIKit
 
 class ScanHomeViewController: UIViewController {
 
+    @IBOutlet weak var lblQRContent: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func onScanTapped(_ sender: UIButton) {
+        let vc = week9.instantiateViewController(withIdentifier: "QRScannerViewController") as! QRScannerViewController
+        vc.passQRContent = {
+            (content) in
+            self.lblQRContent.isHidden = false
+            self.lblQRContent.text = content
+        }
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
-    */
-
+    
+    
 }

@@ -7,39 +7,38 @@
 
 import UIKit
 
-class SideMenuTableViewController: UITableViewController {
-
+class SideMenuTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+    @IBOutlet weak var tableView: UITableView!
+    var taskName = [1,2,3,4,5,6,7,8,9,10]
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return taskName.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! InbuiltSidebarTableViewCell1
+            cell.userImage.image = UIImage(named: "model1")
+            cell.userName.text = "Bruno Pham"
+            
+            return cell
+        }else{
+            let cell2 = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! InbuiltSidebaeTableViewCell2
+            cell2.lblTask.text = "\(taskName[indexPath.row])"
+            
+            
+            return cell2
+        }
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

@@ -15,7 +15,7 @@ let googleMap = UIStoryboard(name: "googlemap", bundle: nil)
 
 class GoogleMapViewController: UIViewController,UITextFieldDelegate{
     
-    @IBOutlet weak var drawerView: UIView!
+
     @IBOutlet weak var currentLocation: UIButton!
     
     @IBOutlet weak var sourceLocationField: UITextField!
@@ -39,13 +39,10 @@ class GoogleMapViewController: UIViewController,UITextFieldDelegate{
     
     var isSourceTapped = false
     var isDestinationTapped = false
-    var isDrawerOpened = false
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        drawerView.isHidden = true
-        isDrawerOpened = false
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -68,8 +65,7 @@ class GoogleMapViewController: UIViewController,UITextFieldDelegate{
         sourceLocationField.delegate = self
         destinationLocationField.delegate = self
         
-        self.drawerView.frame.size.height = self.view.frame.height/1.11
-        drawerView.roundCorners(corners: [.topLeft,.bottomLeft], radius: 20.0)
+       
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -81,16 +77,6 @@ class GoogleMapViewController: UIViewController,UITextFieldDelegate{
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         present(autocompleteController, animated: true, completion: nil)
-    }
-    
-    @IBAction func drawerButton(_ sender: UIBarButtonItem) {
-        if isDrawerOpened{
-            drawerView.isHidden = true
-            isDrawerOpened = false
-        }else{
-            drawerView.isHidden = false
-            isDrawerOpened = true
-        }
     }
     
     
@@ -224,35 +210,77 @@ class GoogleMapViewController: UIViewController,UITextFieldDelegate{
             if (error != nil){
                 print("get routes error :~~ \(String(describing: error))")
             }else{
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data!,options: .allowFragments) as! [String : AnyObject]
-                    let routes = json["routes"] as! NSArray
-                    
-                    DispatchQueue.main.async {
-                        self.mapView.clear()
-                        self.setMarkers()
-                        for route in routes {
-                            let routeOverviewPolyline:NSDictionary = (route as! NSDictionary).value(forKey: "overview_polyline") as! NSDictionary
-                            let points = routeOverviewPolyline.object(forKey: "points")
-                            let path = GMSPath.init(fromEncodedPath: points! as! String)
-                            let polyline = GMSPolyline.init(path: path)
-                            polyline.strokeWidth = 6
-                            
-                            let bounds = GMSCoordinateBounds(path: path!)
-                            self.mapView!.animate(with: GMSCameraUpdate.fit(bounds,withPadding: 30.0))
-                            
-                            polyline.map = self.mapView
-                        }
-                    }
-                    
-                } catch let error as NSError{
-                    print("get routes error of data  :~~ \(String(describing: error))")
-                }
                 
+                         do {
+                             if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] {
+                                 self.mapView.clear()
+                                self.setMarkers()
+                                 guard let routes = json["routes"] as? [[String: Any]], !routes.isEmpty else { return }
+                                 if let route = routes.first {
+                                     guard let legs = route["legs"] as? [[String: Any]] else { return }
+                                     
+                                     for leg in legs {
+                                         if let steps = leg["steps"] as? [[String: Any]] {
+                                             for step in steps {
+                                                 if let polyline = step["polyline"] as? [String: Any],
+                                                    let polylineString = polyline["points"] as? String {
+                                                     DispatchQueue.main.async {
+                                                         let path = GMSPath(fromEncodedPath: polylineString)
+                                                         let polyline = GMSPolyline(path: path)
+                                                         polyline.strokeWidth = 6
+                                                        polyline.strokeColor = .blue
+                                                        polyline.map = self.mapView
+
+                                                     }
+                                                 }
+                                             }
+                                         }
+                                     }
+                                 }
+                             }
+                         } catch {
+                             print("Error parsing JSON: \(error)")
+                         }
+//                do {
+//                    if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any],
+//                       let routes = json["routes"] as? [[String: Any]] {
+//                        print(routes)
+//                        for route in routes {
+//                            if let routeOverviewPolyline = route["overview_polyline"] as? [String: Any],
+//                               let points = routeOverviewPolyline["points"] as? String,
+//                               
+//                               let path = GMSPath(fromEncodedPath: points) {
+//                           
+//                                let polyline = GMSPolyline(path: path)
+//                                polyline.strokeWidth = 6
+//                                polyline.strokeColor = .blue
+//                                polyline.map = self.mapView
+//                           
+//                                let bounds = GMSCoordinateBounds(path: path)
+//                                DispatchQueue.main.async {
+//                               self.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 30.0))
+//                                }
+//                            }
+//                        }
+//                    }
+//                } catch {
+//                    print("Error parsing JSON: \(error)")
+//                }
+
             }
         }).resume()
         
     }
+    func drawPolyline(encodedString: String) {
+           guard let path = GMSPath(fromEncodedPath: encodedString) else { return }
+           let polyline = GMSPolyline(path: path)
+           polyline.strokeWidth = 4.0
+           polyline.strokeColor = .blue
+           polyline.map = mapView
+           
+           let bounds = GMSCoordinateBounds(path: path)
+           mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 30.0))
+       }
     func customAlert(title:String,message:String){
         let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
 

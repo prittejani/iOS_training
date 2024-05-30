@@ -7,7 +7,25 @@
 		<key>Demo_1.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>25</integer>
+			<integer>35</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>88987CBF2B96CD560019172C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88987CD52B96CD580019172C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88987CDF2B96CD580019172C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

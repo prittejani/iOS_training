@@ -23,7 +23,13 @@ class AViewController: UIViewController,UITableViewDelegate,UITableViewDataSourc
         tableView.dataSource = self
         tableView.reloadData()
         navigationController?.navigationBar.prefersLargeTitles = true
-    
+        fetchData(){
+            [weak self](users) in
+            self?.users = users
+            DispatchQueue.main.async {
+                self!.tableView.reloadData()
+            }
+        }
         tableView.tableFooterView = activityIndicator
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
@@ -48,13 +54,7 @@ class AViewController: UIViewController,UITableViewDelegate,UITableViewDataSourc
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fetchData(){
-            [weak self](users) in
-            self?.users = users
-            DispatchQueue.main.async {
-                self!.tableView.reloadData()
-            }
-        }
+      
     }
    
     @IBAction func onBackTapped(_ sender: UIBarButtonItem) {
@@ -174,11 +174,23 @@ class AViewController: UIViewController,UITableViewDelegate,UITableViewDataSourc
 //    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){(action,view,handler) in
-            do{
-                self.deleteData(id: self.users[indexPath.row].userID)
+            let alert = UIAlertController(title: "do you want to delete this record?", message: "", preferredStyle: .alert)
+                
+            let yes = UIAlertAction(title: "Yes", style: .destructive,handler: {(action) in
+                do{
+                    self.deleteData(id: self.users[indexPath.row].userID)
+                
+                    print("deleted")
+                }
+                tableView.reloadData()
+            })
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel,handler: {(action) -> Void in self.dismiss(animated: true)
+            })
+    
+            alert.addAction(cancel)
+            alert.addAction(yes)
+            self.present(alert, animated: true)
             
-                print("deleted")
-            }
         }
         deleteAction.backgroundColor = .red
         return UISwipeActionsConfiguration(actions: [deleteAction])

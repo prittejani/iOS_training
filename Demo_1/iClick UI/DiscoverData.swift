@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import UIKit
+struct DiscoverData {
+    
+    let sectionType: String
+    let image:[UIImage]
+    let info:[String]
+}

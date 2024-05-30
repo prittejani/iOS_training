@@ -25,6 +25,18 @@
         }
       }
     },
+    "4aw-4Y-box.title" : {
+      "comment" : "Class = \"UINavigationItem\"; title = \"Localization\"; ObjectID = \"4aw-4Y-box\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Localization"
+          }
+        }
+      }
+    },
     "4Mw-BX-owO.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"4Mw-BX-owO\";",
       "extractionState" : "extracted_with_value",
@@ -243,30 +255,6 @@
     },
     "Jk7-A2-649.normalTitle" : {
       "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"Jk7-A2-649\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Button"
-          }
-        }
-      }
-    },
-    "kwH-C9-Tvn.configuration.title" : {
-      "comment" : "Class = \"UIButton\"; configuration.title = \"Cancel\"; ObjectID = \"kwH-C9-Tvn\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Cancel"
-          }
-        }
-      }
-    },
-    "kwH-C9-Tvn.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"kwH-C9-Tvn\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {

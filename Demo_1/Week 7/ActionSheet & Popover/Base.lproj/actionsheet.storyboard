@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jk7-A2-649">
-                                <rect key="frame" x="16" y="103" width="361" height="35"/>
+                                <rect key="frame" x="16" y="128" width="361" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="JCf-Dt-dgR"/>
                                 </constraints>
@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ME-9u-ey2">
-                                <rect key="frame" x="16" y="146" width="361" height="35"/>
+                                <rect key="frame" x="16" y="171" width="361" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="cye-R3-o2a"/>
                                 </constraints>
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gef-jd-P06">
-                                <rect key="frame" x="16" y="189" width="361" height="35"/>
+                                <rect key="frame" x="16" y="214" width="361" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1ZO-zV-bnP"/>
                                 </constraints>
@@ -56,7 +56,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uT-j1-LKL">
-                                <rect key="frame" x="16" y="232" width="361" height="35"/>
+                                <rect key="frame" x="16" y="257" width="361" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="red-1d-rsd"/>
                                 </constraints>
@@ -71,7 +71,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3ME-9u-ey2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="01V-jF-d6S"/>
-                            <constraint firstItem="Jk7-A2-649" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="0sZ-8b-bDZ"/>
+                            <constraint firstItem="Jk7-A2-649" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="0sZ-8b-bDZ"/>
                             <constraint firstItem="gef-jd-P06" firstAttribute="top" secondItem="3ME-9u-ey2" secondAttribute="bottom" constant="8" symbolic="YES" id="9ha-nv-PRA"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3ME-9u-ey2" secondAttribute="trailing" constant="16" id="BLT-C7-HdU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gef-jd-P06" secondAttribute="trailing" constant="16" id="K0t-Ir-qmM"/>
@@ -103,7 +103,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJa-9j-08Z">
-                                <rect key="frame" x="155" y="408.66666666666669" width="83" height="35"/>
+                                <rect key="frame" x="155" y="408.66666666666669" width="83.333333333333314" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Dismiss"/>
                                 <connections>
@@ -181,7 +181,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mng-Ts-kwE"/>
-                        <color key="backgroundColor" red="0.47568527375808867" green="0.47568527375808867" blue="0.47568527375808867" alpha="0.40978953380458405" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="0.40978953380458405" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Mng-Ts-kwE" firstAttribute="trailing" secondItem="wJB-Ju-3Pk" secondAttribute="trailing" constant="80" id="8z9-aE-WOz"/>
                             <constraint firstItem="wJB-Ju-3Pk" firstAttribute="centerY" secondItem="6WY-sV-qHQ" secondAttribute="centerY" id="Gwd-m4-QAu"/>
@@ -206,7 +206,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uhJ-qD-Otq">
-                                <rect key="frame" x="0.0" y="59" width="393" height="723"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="9pr-Y0-XIR" customClass="PopOverTableViewCell" customModule="Demo_1" customModuleProvider="target">
@@ -238,28 +238,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwH-C9-Tvn">
-                                <rect key="frame" x="16" y="790" width="361" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="14N-BU-7Ie"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Cancel"/>
-                                <connections>
-                                    <action selector="onCancelTapped:" destination="7IO-M9-UMT" eventType="touchUpInside" id="AGn-6B-ou7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Iy0-YR-RNE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kwH-C9-Tvn" firstAttribute="top" secondItem="uhJ-qD-Otq" secondAttribute="bottom" constant="8" id="0kI-3J-JXx"/>
-                            <constraint firstAttribute="bottom" secondItem="kwH-C9-Tvn" secondAttribute="bottom" constant="27" id="4IE-aL-aCg"/>
-                            <constraint firstItem="kwH-C9-Tvn" firstAttribute="leading" secondItem="Iy0-YR-RNE" secondAttribute="leading" constant="16" id="5UC-VL-kUL"/>
                             <constraint firstItem="uhJ-qD-Otq" firstAttribute="top" secondItem="Iy0-YR-RNE" secondAttribute="top" id="R7N-ls-96F"/>
                             <constraint firstItem="uhJ-qD-Otq" firstAttribute="leading" secondItem="Iy0-YR-RNE" secondAttribute="leading" id="RVv-TF-Xxd"/>
                             <constraint firstItem="uhJ-qD-Otq" firstAttribute="trailing" secondItem="Iy0-YR-RNE" secondAttribute="trailing" id="n67-pp-BcR"/>
-                            <constraint firstItem="Iy0-YR-RNE" firstAttribute="trailing" secondItem="kwH-C9-Tvn" secondAttribute="trailing" constant="16" id="sWB-qw-rsZ"/>
+                            <constraint firstAttribute="bottom" secondItem="uhJ-qD-Otq" secondAttribute="bottom" id="vRL-lL-Sxd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -268,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WXp-EZ-CLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4935.1145038167933" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="4933.5877862595416" y="-27.464788732394368"/>
         </scene>
         <!--Week7 View Controller-->
         <scene sceneID="wWx-Rg-WDb">
@@ -331,7 +317,7 @@
             </objects>
             <point key="canvasLocation" x="1366" y="-27"/>
         </scene>
-        <!--Localization View Controller-->
+        <!--Localization-->
         <scene sceneID="K9A-8M-RUl">
             <objects>
                 <viewController storyboardIdentifier="LocalizationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eE2-Tm-q7T" customClass="LocalizationViewController" customModule="Demo_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -369,13 +355,7 @@
                             <constraint firstItem="IWO-wO-4C7" firstAttribute="top" secondItem="lRX-vV-QVl" secondAttribute="top" constant="10" id="yNI-jN-p88"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4aw-4Y-box">
-                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="8zZ-e0-K7p">
-                            <connections>
-                                <action selector="onSettingTapped:" destination="eE2-Tm-q7T" id="7cw-bD-ekz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Localization" id="4aw-4Y-box"/>
                     <connections>
                         <outlet property="languageField" destination="IWO-wO-4C7" id="Oyd-el-GlU"/>
                         <outlet property="lblParagraph" destination="IuH-XD-DyE" id="XGw-BN-Fup"/>
@@ -527,7 +507,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gearshape" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -11,30 +11,30 @@ class WhatsappShareViewController: UIViewController, UIImagePickerControllerDele
 
     @IBOutlet weak var imageView: UIImageView!
     var shareMsg:String!
-   // @IBOutlet weak var message: UITextField!
+    @IBOutlet weak var message: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
  
     @IBAction func shareOnWhatsapp(_ sender: UIButton) {
         
-      //  if message.hasText == true{
-       //  shareMsg = message.text
+        if message.hasText == true{
+            shareMsg = message.text
             guard let image = imageView.image else {
                 customAlert(title: "Alert", message: "Please Select Image")
                 return
             }
             
-            let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: [])
+            let activityViewController = UIActivityViewController(activityItems: [image,shareMsg!], applicationActivities: [])
             if let popoverPresentationController = activityViewController.popoverPresentationController{
                 popoverPresentationController.sourceView = self.view
                 popoverPresentationController.sourceRect = self.view.bounds
-            } 
+            }
             activityViewController.excludedActivityTypes = [
-                        .addToReadingList,
-                        .openInIBooks
-                    ]
-
+                .addToReadingList,
+                .openInIBooks
+            ]
+            
             present(activityViewController, animated: true, completion: nil)
             //            let urlWhats = "whatsapp://send?text=\("\(shareMsg!)")"
             //            if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
@@ -51,7 +51,7 @@ class WhatsappShareViewController: UIViewController, UIImagePickerControllerDele
             //            customAlert(title: "Alert!!", message: "Message is required")
             //        }
         }
- 
+    }
     
     @IBAction func choosePhoto(_ sender: UIButton) {
         

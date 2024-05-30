@@ -13,7 +13,6 @@ import FBSDKLoginKit
 
 class GoogleSigninViewController: UIViewController, ASAuthorizationControllerPresentationContextProviding,LoginButtonDelegate{
   
-    @IBOutlet weak var imageview: UIImageView!
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,15 +58,7 @@ class GoogleSigninViewController: UIViewController, ASAuthorizationControllerPre
         
     }
     
-    @IBAction func appleLogout(_ sender: Any) {
-        let request = ASAuthorizationAppleIDProvider().createRequest()
-        
-        request.requestedOperation = .operationLogout
-        
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        
-        authorizationController.performRequests()
-    }
+    
     @IBAction func googleSignIn(_ sender: Any) {
         GIDSignIn.sharedInstance.signIn(withPresenting: self){
             signInResult,error in
@@ -82,20 +73,35 @@ class GoogleSigninViewController: UIViewController, ASAuthorizationControllerPre
             }
         }
     }
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return view.window!
-    }
+   
 }
+
 extension GoogleSigninViewController :ASAuthorizationControllerDelegate{
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("\(error)")
+        let alert = UIAlertController(title: "ERROR", message: "\(error.localizedDescription)", preferredStyle: .alert)
+               alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+               present(alert, animated: true, completion: nil)
     }
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
     if let appleIDCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
     let userIdentifier = appleIDCredential.user
     let fullName = appleIDCredential.fullName
     let email = appleIDCredential.email
+        
+        if let userIDData = userIdentifier.data(using: .utf8),let familyName = appleIDCredential.fullName?.givenName?.data(using: .utf8),let email = appleIDCredential.email!.data(using: .utf8){
+            KeychainHelper.standard.save(userIDData, service: "com.app.pocketcoach", account: "appleID")
+            KeychainHelper.standard.save(familyName, service: "com.app.pocketcoach", account: "givenName")
+            KeychainHelper.standard.save(email, service: "com.app.pocketcoach", account: "email")
+        }
+        
     print("User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email))") }
+        
+        UserDefaults.standard.setValue("viaApple", forKey: "loginForm")
+        Switcher.updateRootVC(status: true)
+    }
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
     }
 }
+
 

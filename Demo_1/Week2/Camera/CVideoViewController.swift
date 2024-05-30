@@ -29,11 +29,9 @@ class CVideoViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     var timer:Timer!
     var seconds = 0
     var data:Data!
-    var isRecording = false
     var isAutoOn = false
     
-//    @IBOutlet weak var resumeButton: UIButton!
-//    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var play_pause_button: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var capturedImage: UIImageView!
@@ -58,46 +56,33 @@ class CVideoViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
         recordButton.layer.backgroundColor = UIColor.clear.cgColor
         recordButton.layer.borderColor = UIColor.white.cgColor
         autoButton.isHidden = true
-//        pauseButton.isHidden = true
-//        resumeButton.isHidden = true
+
+        play_pause_button.isHidden = true
+        
         recordButton.isHidden = true
-        recordLabel.isHidden = false
+        recordLabel.isHidden = true
+        recordLabel.layer.cornerRadius = 10.0
+        recordLabel.clipsToBounds = true
         
         let image = UITapGestureRecognizer(target: self, action: #selector(largeImage))
         capturedImage.addGestureRecognizer(image)
     }
     @objc func largeImage (){
-        let vc = storyboard?.instantiateViewController(withIdentifier: "VideoCollectionViewController") as! VideoCollectionViewController
+        let vc = cameraVideo.instantiateViewController(withIdentifier: "VideoCollectionViewController") as! VideoCollectionViewController
         navigationController?.pushViewController(vc, animated: true)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        recordLabel.isHidden = false
+        
         navigationController?.navigationBar.isHidden = false
         setupAndStartCaptureSession()
         
     }
-    
-//    @IBAction func pauseButton(_ sender: UIButton) {
-//        resumeButton.isHidden = false
-//        if isRecording{
-//            stopRecordingto()
-//            pauseButton.isHidden = true
-//        }
-//    }
-//    @IBAction func resumeButton(_ sender: UIButton) {
-//        pauseButton.isHidden = true
-//        if !isRecording{
-//            startRecordingTo()
-//
-//        }
-//    }
-    
-    
+
     @IBAction func onPhotoTapped(_ sender: UIButton) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
+        let vc = cameraVideo.instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -115,18 +100,27 @@ class CVideoViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     }
     
     
-    
     @IBAction func onVideoButtonTapped(_ sender: UIButton) {
-//        pauseButton.isHidden = false
-       videoButton.isHidden = true
+        play_pause_button.isHidden = false
+        videoButton.isHidden = true
         recordButton.isHidden = false
         if movieOutput.isRecording{
+            recordLabel.isHidden = true
             movieOutput.stopRecording()
         
         }else{
+            recordLabel.isHidden = false
             startRecording()
         }
     }
+    
+    @IBAction func play_pause_button_Tapped(_ sender: UIButton) {
+        movieOutput.stopRecording()
+        timer.invalidate()
+        
+    }
+    
+    
     @IBAction func onTourchTapped(_ sender: Any) {
         torchConfig()
         
@@ -134,11 +128,13 @@ class CVideoViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
     
     @IBAction func onRecording(_ sender: UIButton) {
         videoButton.isHidden = false
+        recordLabel.isHidden = true
         movieOutput.stopRecording()
         recordButton.isHidden = true
         timer.invalidate()
         recordLabel.text = ""
     }
+    
     func torchConfig(){
         do{
             try backCamera.lockForConfiguration()
@@ -230,10 +226,12 @@ class CVideoViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
         if !captureSession.canAddInput(frontInput){
             fatalError("could not add front camera input to capture session")
         }
-     
+
         if isBack {
+         
             captureSession.addInput(backInput)
         }else{
+          
             captureSession.addInput(frontInput)
         }
         
@@ -267,6 +265,11 @@ class CVideoViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
             }catch{
                 print(error)
             }
+            if captureSession.canAddInput(audioInput) {
+                  captureSession.addInput(audioInput)
+              } else {
+                  fatalError("Could not add audio input to capture session")
+              }
             let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             let tempURL = paths[0].appendingPathComponent("videos\(cvideoArray.count + 1).mp4")
             cvideoArray.append(tempURL)
@@ -274,6 +277,11 @@ class CVideoViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
             isVideoOn = true
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
         }else{
+            if captureSession.canAddInput(audioInput) {
+                  captureSession.addInput(audioInput)
+              } else {
+                  fatalError("Could not add audio input to capture session")
+              }
             let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             let tempURL = paths[0].appendingPathComponent("videos\(cvideoArray.count + 1).mp4")
             cvideoArray.append(tempURL)
@@ -282,20 +290,7 @@ class CVideoViewController: UIViewController,AVCaptureFileOutputRecordingDelegat
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
         }
     }
-//    func startRecordingTo(){
-//        guard let output = movieOutput else { return }
-//        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-//        let outputPath =  paths[0].appendingPathComponent("videos\(videoArray.count + 1).mp4") as! String
-//        let outputFileURL = URL(fileURLWithPath: outputPath)
-//        output.startRecording(to: outputFileURL, recordingDelegate: self)
-//        isRecording = true
-//    }
-//    func stopRecordingto(){
-//        guard let output = movieOutput, isRecording else { return }
-//        output.stopRecording()
-//        isRecording = false
-//    }
-    
+
     @objc func timerUpdate(){
         let totalSeconds = CMTimeGetSeconds(movieOutput.recordedDuration)
         let hours = Int(totalSeconds / 3600)

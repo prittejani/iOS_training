@@ -53,7 +53,9 @@ class PlayVideoViewController: UIViewController {
         }
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        player.pause()
+    }
     
     @objc func responseToSwipe(gesture: UIGestureRecognizer){
         

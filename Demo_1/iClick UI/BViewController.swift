@@ -6,24 +6,30 @@
 //
 
 import UIKit
+import MaterialComponents
 
 class BViewController: UIViewController {
-
+    let bottomAppBar = MDCBottomAppBarView()
+    var floatingButton = MDCFloatingButton()
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        floatingButton = bottomAppBar.floatingButton
+//    
+//          floatingButton.setImage(UIImage(systemName: "plus"), for: UIControl.State.normal)
+//          floatingButton.tintColor = .white
+//          floatingButton.backgroundColor = UIColor(named: "customColor")
+//          bottomAppBar.barTintColor = UIColor(named: "customColor")
+//    
+//          bottomAppBar.frame = CGRect(x: 0, y: view.frame.height * 0.86, width: view.frame.width, height: view.frame.height * 0.14)
+//        bottomAppBar.barTintColor = .red
+//    
+//    
+//          view.addSubview(bottomAppBar)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

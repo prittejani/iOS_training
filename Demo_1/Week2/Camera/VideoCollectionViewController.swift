@@ -29,7 +29,7 @@ class VideoCollectionViewController: UIViewController {
 extension VideoCollectionViewController : UICollectionViewDelegate,UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "PlayVideoViewController") as! PlayVideoViewController
+        let vc = cameraVideo.instantiateViewController(withIdentifier: "PlayVideoViewController") as! PlayVideoViewController
         let videoUrl = cvideoArray[indexPath.row]
         vc.videourl = videoUrl
         vc.getCurrentIndex = indexPath.row

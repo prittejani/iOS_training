@@ -25,23 +25,19 @@ class VideoViewController: UIViewController {
     var player = AVPlayer()
     var playerLayer = AVPlayerLayer()
     var isPlaying:Bool = false
-    var isFullScreen:Bool = false
+    var isFullScreen = false
     var isVideoControlUIHidden:Bool = false
     var isSliderBeingUsed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         self.view.addSubview(volumeControl)
         videoConfigure()
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {
         [weak self] timer in
             self?.setVolume()
         })
-//        soundSlider.addTarget(self, action: #selector(setVolume(sender: event:)), for: .valueChanged)
-        let panGesture = UIPanGestureRecognizer(target: self, action:  #selector(panGesture(gesture:)))
-            self.videoSlider.addGestureRecognizer(panGesture)
-        videoSlider.addTarget(self, action: #selector(changeVideoSlider(sender: event:)), for: .valueChanged)
     }
     override func viewDidLayoutSubviews() {
         volumeControl.frame = CGRect(x: -120, y: -120, width: 100, height: 100);
@@ -60,18 +56,46 @@ class VideoViewController: UIViewController {
         videoControlUI.clipsToBounds = true
         videoControlUI.layer.cornerRadius = 12.0
         videoPlayerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onVideoControlTapped)))
+        do{
+           try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
+            try AVAudioSession.sharedInstance().setActive(true)
+        }catch{
+            print("unable to play audio")
+        }
     }
     
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         player.pause()
+        playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        player.pause()
+        playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         UIViewController.attemptRotationToDeviceOrientation()
+    }
+    
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print(isFullScreen)
+        if isFullScreen{
+            print(isFullScreen)
+            playerLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+            playerLayer.videoGravity = .resizeAspect
+            isFullScreen = false
+            print(isFullScreen)
+        }
+        else{
+            print(isFullScreen)
+            playerLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+            playerLayer.videoGravity = .resizeAspect
+            isFullScreen = true
+            print(isFullScreen)
+        }
     }
 
     @objc func onVideoControlTapped(){
@@ -84,21 +108,7 @@ class VideoViewController: UIViewController {
         }
     }
     
-//    @objc func setVolume(sender: UISlider, event:UIEvent) {
-//        if let touchEvent = event.allTouches?.first {
-//            if touchEvent.phase == .ended {
-//                let audioSession = AVAudioSession.sharedInstance()
-//                do {
-//                    try audioSession.setActive(true)
-//                    let currentVolume = audioSession.outputVolume
-//                    soundSlider.value = currentVolume
-//                    } catch {
-//                    print("Error in sound\(error.localizedDescription)")
-//                }
-//            }
-//        }
-//
-//    }
+    
     @objc func setVolume() {
         let audioSession = AVAudioSession.sharedInstance()
                do {
@@ -117,46 +127,42 @@ class VideoViewController: UIViewController {
         volumeViewSlider?.setValue(volume, animated: false)
     }
     
-    @objc func changeVideoSlider(sender: UISlider, event:UIEvent){
-        isSliderBeingUsed = true
-        
-    }
-    
+
     @IBAction func onVideoSlidreTouch(_ sender: UISlider) {
-        let time = CMTime(seconds: Double(sender.value), preferredTimescale: 60)
-        player.seek(to: time)
+        player.seek(to: CMTime(seconds: Double(sender.value), preferredTimescale: 60))
         if isPlaying {
             player.play()
         }
-        isSliderBeingUsed = false
     }
-    
+    @IBAction func onVideoSliderValueChange(_ sender: UISlider) {
+        print("slider value \(videoSlider.value)")
+    }
+  
     private func videoConfigure(){
-        isPlaying = true
-        playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-        let url = videoFiles[index]
-        player = AVPlayer(url: url)
-        playerLayer = AVPlayerLayer(player: player)
-        let playerController = AVPlayerViewController()
-        playerController.player = player
-        playerLayer.frame = self.view.bounds
-        //playerLayer.videoGravity = .resize
-        self.videoPlayerView.layer.addSublayer(playerLayer)
-        player.play()
+            isPlaying = true
+            playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            let url = videoFiles[index]
+            player = AVPlayer(url: url)
+            playerLayer = AVPlayerLayer(player: player)
+            let playerController = AVPlayerViewController()
+            playerController.player = player
+            playerLayer.frame = self.view.bounds
+            self.videoPlayerView.layer.addSublayer(playerLayer)
+            player.play()
+            
+            player.volume = 0.5
+            
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(timeCounter), userInfo: true, repeats: true)
+            
+            let totalDuration = getTotalDurationOfVideo(at: videoFiles[index])
+            videoTotalDuration.text = "\(formattedTimeFrom(seconds: CMTimeGetSeconds(totalDuration)))"
+            
+            videoSlider.minimumValue = Float(player.currentTime().seconds)
+            videoSlider.maximumValue = Float(CMTimeGetSeconds(totalDuration))
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(replayVideo), name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
         
-        player.volume = 0.5
-        
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(timeCounter), userInfo: true, repeats: true)
-
-        let totalDuration = getTotalDurationOfVideo(at: videoFiles[index])
-        videoTotalDuration.text = "\(formattedTimeFrom(seconds: CMTimeGetSeconds(totalDuration)))"
-        
-        videoSlider.minimumValue = Float(player.currentTime().seconds)
-        videoSlider.maximumValue = Float(CMTimeGetSeconds(totalDuration))
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(replayVideo), name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
     }
-    
     @objc func replayVideo(){
         playerLayer.removeFromSuperlayer()
         timer.invalidate()
@@ -217,10 +223,12 @@ class VideoViewController: UIViewController {
             index += 1
             playerLayer.removeFromSuperlayer()
             videoConfigure()
+          
         }else{
             index = 0
             playerLayer.removeFromSuperlayer()
             videoConfigure()
+         
         }
         
     }
@@ -230,29 +238,28 @@ class VideoViewController: UIViewController {
             index -= 1
             playerLayer.removeFromSuperlayer()
             videoConfigure()
+      
         }else{
             index = 0
             playerLayer.removeFromSuperlayer()
             videoConfigure()
+           
         }
     }
     
     @IBAction func fullScreen(_ sender: UIButton) {
         if isFullScreen{
-            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-            UIViewController.attemptRotationToDeviceOrientation()
-            playerLayer.frame = videoPlayerView.bounds
-            playerLayer.videoGravity = .resizeAspect
-            isFullScreen = false
+            setDeviceOrientation(orientation: .portrait)
+            playerLayer.frame =  self.view.bounds
+           playerLayer.videoGravity = .resizeAspect
+
         }else{
-            UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
-            UIViewController.attemptRotationToDeviceOrientation()
-            playerLayer.frame = videoPlayerView.bounds
-            playerLayer.videoGravity = .resizeAspectFill
-            isFullScreen = true
+            setDeviceOrientation(orientation: .landscapeRight)
+            playerLayer.frame =  self.view.bounds
+            playerLayer.videoGravity = .resizeAspect
         }
     }
-
+  
     
     func formattedTimeFrom(seconds: TimeInterval) -> String {
         let totalSeconds = Int(seconds)
@@ -262,4 +269,32 @@ class VideoViewController: UIViewController {
         return String(format: "%02d:%02d:%02d",hours,minutes,seconds)
     }
     
+}
+extension UIViewController {
+    
+    func setDeviceOrientation(orientation: UIInterfaceOrientationMask) {
+        if #available(iOS 16.0, *) {
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            windowScene?.requestGeometryUpdate(.iOS(interfaceOrientations: orientation))
+        } else {
+            UIDevice.current.setValue(orientation.toUIInterfaceOrientation.rawValue, forKey: "orientation")
+        }
+    }
+}
+
+extension UIInterfaceOrientationMask {
+    var toUIInterfaceOrientation: UIInterfaceOrientation {
+        switch self {
+        case .portrait:
+            return UIInterfaceOrientation.portrait
+        case .portraitUpsideDown:
+            return UIInterfaceOrientation.portraitUpsideDown
+        case .landscapeRight:
+            return UIInterfaceOrientation.landscapeRight
+        case .landscapeLeft:
+            return UIInterfaceOrientation.landscapeLeft
+        default:
+            return UIInterfaceOrientation.unknown
+        }
+    }
 }

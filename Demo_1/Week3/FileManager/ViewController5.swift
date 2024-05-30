@@ -25,6 +25,14 @@ class ViewController5: UIViewController,UITableViewDelegate,UITableViewDataSourc
         tableView.dataSource = self
         getFileNames()
         navigationController?.navigationBar.prefersLargeTitles = false
+        if fileNameArray.count == 0 {
+            tableView.isHidden = true
+            noFilesView.isHidden = false
+        }else{
+           tableView.reloadData()
+            tableView.isHidden = false
+            noFilesView.isHidden = true
+        }
         tableView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -125,7 +133,7 @@ class ViewController5: UIViewController,UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){(action,view,handler) in
             
-            let alert = UIAlertController(title: "Are you sure?", message: "You want to delete this file", preferredStyle: .alert)
+            let alert = UIAlertController(title: "do you want to delete this file ?", message: "", preferredStyle: .alert)
                 
             let yes = UIAlertAction(title: "Yes", style: .destructive,handler: {(action) in
                 do{
@@ -193,6 +201,14 @@ class ViewController5: UIViewController,UITableViewDelegate,UITableViewDataSourc
                 print("~~~~>>>> pdf saved succcessfully")
                 fileNameArray.append(pdfUrl)
                 print(fileNameArray)
+                if fileNameArray.count == 0 {
+                    tableView.isHidden = true
+                    noFilesView.isHidden = false
+                }else{
+                   tableView.reloadData()
+                    tableView.isHidden = false
+                    noFilesView.isHidden = true
+                }
                 print("save pdf url ~~~>>> \(savePdfUrl)")
                 tableView.reloadData()
             }catch{

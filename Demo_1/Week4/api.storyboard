@@ -13,7 +13,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="AViewController" id="BYZ-38-t0r" customClass="AViewController" customModule="Demo_1" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="KAa-pv-cuK">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="KAa-pv-cuK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -73,15 +73,10 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Api Calling" id="rr8-pn-QMG">
-                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="xOV-kD-yHE">
-                            <connections>
-                                <action selector="onBackTapped:" destination="BYZ-38-t0r" id="aQH-xL-v38"/>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="u6a-o8-RHK">
+                        <leftBarButtonItems>
+                            <barButtonItem image="chevron.left" catalog="system" id="xOV-kD-yHE">
                                 <connections>
-                                    <action selector="onAddTapped:" destination="BYZ-38-t0r" id="N3G-K6-MkD"/>
+                                    <action selector="onBackTapped:" destination="BYZ-38-t0r" id="aQH-xL-v38"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Pagination" id="ufE-kW-t1z">
@@ -89,7 +84,12 @@
                                     <action selector="onPaginationTapped:" destination="BYZ-38-t0r" id="qSJ-kD-vwY"/>
                                 </connections>
                             </barButtonItem>
-                        </rightBarButtonItems>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="u6a-o8-RHK">
+                            <connections>
+                                <action selector="onAddTapped:" destination="BYZ-38-t0r" id="N3G-K6-MkD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="KAa-pv-cuK" id="fnz-gf-iUg"/>

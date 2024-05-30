@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct CollectionViewCellModel {
+    var image: String
+}

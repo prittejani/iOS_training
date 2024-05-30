@@ -7,6 +7,7 @@ target 'Demo_1' do
   
   
   # Pods for Demo_1
+  pod 'SwiftVideoGenerator'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'Alamofire'
@@ -18,6 +19,13 @@ target 'Demo_1' do
   pod 'FacebookLogin'
   pod 'FBSDKLoginKit'
   pod 'SVProgressHUD'
+  pod 'Stripe', '~> 22.8'
+  pod 'LGSegmentedControl'
+  pod 'MaterialComponents'
+  pod 'CHTCollectionViewWaterfallLayout'
+  pod 'SendGrid', '~>  0.2.6'
+  pod 'SwiftyStoreKit'
+
 
   target 'Demo_1Tests' do
     inherit! :search_paths

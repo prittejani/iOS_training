@@ -39,7 +39,7 @@ class CallViewController: UIViewController {
         if mobileNumber.hasText == true{
              mobile = mobileNumber.text
             if validateMobileno(mobile) == false {
-                customAlert(title: "Alert!!", message: "Mobile number is not valid")
+                self.customAlert(title: "Alert!!", message: "Mobile number is not valid")
             }else{
                 if let url = URL(string: "tel://\(mobile!)"),UIApplication.shared.canOpenURL(url){
                     UIApplication.shared.open(url)
@@ -48,7 +48,7 @@ class CallViewController: UIViewController {
                 }
             }
         }else{
-            customAlert(title: "Alert!!", message: "Mobile number is required")
+            self.customAlert(title: "Alert!!", message: "Mobile number is required")
         }
 
     }

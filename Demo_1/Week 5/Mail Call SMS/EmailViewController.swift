@@ -7,12 +7,14 @@
 
 import UIKit
 import MessageUI
+import SendGrid
 
 class EmailViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
     var email:String!
     var subjectOfMail:String!
     var bodyOfMail:String!
     @IBOutlet weak var sendMail: UIButton!
+    @IBOutlet weak var sendMail2: UIButton!
     @IBOutlet weak var body: UITextView!
     @IBOutlet weak var subject: UITextField!
     @IBOutlet weak var toMail: UITextField!
@@ -34,15 +36,15 @@ class EmailViewController: UIViewController,UITextViewDelegate,UITextFieldDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.toMail.center.x = self.view.frame.width + 50
-        UIView.animate(withDuration: 3.0,delay: 0,usingSpringWithDamping: 1.0,initialSpringVelocity: 1.0,options: .allowAnimatedContent,animations: {
+        UIView.animate(withDuration: 2.0,delay: 0,usingSpringWithDamping: 1.0,initialSpringVelocity: 1.0,options: .allowAnimatedContent,animations: {
             self.toMail.center.x = self.view.frame.width/2
         },completion: nil)
         self.subject.center.x = self.view.frame.width + 100
-        UIView.animate(withDuration: 3.0,delay: 0,usingSpringWithDamping: 1.0,initialSpringVelocity: 1.0,options: .allowAnimatedContent,animations: {
+        UIView.animate(withDuration: 2.0,delay: 0,usingSpringWithDamping: 1.0,initialSpringVelocity: 1.0,options: .allowAnimatedContent,animations: {
             self.subject.center.x = self.view.frame.width/2
         },completion: nil)
       
-        UIView.animate(withDuration: 1.5,animations: {
+        UIView.animate(withDuration: 1.2,animations: {
             self.body.transform = CGAffineTransform.identity.scaledBy(x: 0.6, y: 0.6)
         },completion: {(finish) in
             UIView.animate(withDuration: 0.40, animations: {
@@ -50,11 +52,19 @@ class EmailViewController: UIViewController,UITextViewDelegate,UITextFieldDelega
             })
             
         })
-        UIView.animate(withDuration: 1.5,animations: {
+        UIView.animate(withDuration: 1.2,animations: {
             self.sendMail.transform = CGAffineTransform.identity.scaledBy(x: 0.6, y: 0.6)
         },completion: {(finish) in
             UIView.animate(withDuration: 0.40, animations: {
                 self.sendMail.transform = CGAffineTransform.identity
+            })
+            
+        })
+        UIView.animate(withDuration: 1.2,animations: {
+            self.sendMail2.transform = CGAffineTransform.identity.scaledBy(x: 0.6, y: 0.6)
+        },completion: {(finish) in
+            UIView.animate(withDuration: 0.40, animations: {
+                self.sendMail2.transform = CGAffineTransform.identity
             })
             
         })
@@ -102,6 +112,25 @@ class EmailViewController: UIViewController,UITextViewDelegate,UITextFieldDelega
             customAlert(title: "Alert!!", message: "All Field is required")
         }
     }
+    
+    @IBAction func sendViaThirdParty(_ sender: UIButton) {
+        
+        let sendGrid = SendGridService()
+        if toMail.hasText == true && subject.hasText == true && body.hasText == true {
+             email = toMail.text
+            subjectOfMail = subject.text
+            bodyOfMail = body.text
+            if isValidEmail(email: email) == false {
+                customAlert(title: "Alert!!", message: "Email is not valid")
+            }else{
+                sendGrid.sendEmail(to: email, subject: subjectOfMail, body: "\(bodyOfMail!)")
+                customAlert(title: "Done", message: "Mail Sent Successfully to \(email!)")
+            }
+        }else{
+            customAlert(title: "Alert!!", message: "All Field is required")
+        }
+    }
+    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }

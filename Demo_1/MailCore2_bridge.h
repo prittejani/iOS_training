@@ -10,3 +10,4 @@
 
 
 #endif /* MailCore2_bridge_h */
+

@@ -7,23 +7,54 @@
 
 import UIKit
 
-class ActivityViewController: UIViewController {
+class ActivityViewController: UIViewController{
 
+    var activityProfileImage = ["model1","model1","model1"]
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let navView = UIView()
+        navView.backgroundColor = .yellow
+        navView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 50)
+        
+        let activityLabel = UILabel()
+        activityLabel.text = "Activity"
+        
+        let stackView = UIStackView(arrangedSubviews: [activityLabel])
+        stackView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 50)
+        navigationItem.titleView = stackView
+        navigationItem.hidesBackButton = true
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "ActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        tableView.separatorStyle = .none
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func onSettingTapped(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "iClickBottomSheetViewController") as! iClickBottomSheetViewController
+        if let sheet = vc.sheetPresentationController{
+            sheet.detents = [.medium()]
+            sheet.preferredCornerRadius = 25.0
+            sheet.prefersGrabberVisible = true
+            present(vc, animated: true, completion: nil)
+        }
     }
-    */
+}
 
+extension ActivityViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return activityProfileImage.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ActivityTableViewCell
+        cell.userProfileImage.image = UIImage(named: activityProfileImage[indexPath.row])
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
 }

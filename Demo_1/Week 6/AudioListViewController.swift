@@ -95,7 +95,6 @@ class AudioListViewController: UIViewController {
         alert.addAction(saveAction)
         present(alert, animated: true)
     }
-    
 }
 
 
@@ -118,7 +117,6 @@ extension AudioListViewController:UITableViewDelegate,UITableViewDataSource,UIDo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = audio_video.instantiateViewController(withIdentifier: "AudioViewController") as! AudioViewController
         vc.index = indexPath.row
-        //present(vc, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -1,0 +1,111 @@
+{
+  "identifier" : "AEED1C3B",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "6.75",
+      "familyShareable" : false,
+      "internalID" : "13ED58A2",
+      "localizations" : [
+        {
+          "description" : "$6.75 for Non Renewable",
+          "displayName" : "One Month Purchase",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.app.Month",
+      "referenceName" : "One Month",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "817B1622",
+      "localizations" : [
+        {
+          "description" : "$0.99 for Consumable ",
+          "displayName" : "One Day Purchase",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.purchase.Oneday",
+      "referenceName" : "One Day Purchase",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "5.99",
+      "familyShareable" : false,
+      "internalID" : "292C34F1",
+      "localizations" : [
+        {
+          "description" : "$5.99 for Non Consumable",
+          "displayName" : "One Week Purchase",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.purchase.Week",
+      "referenceName" : "One Week Purchase",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

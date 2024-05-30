@@ -11,6 +11,9 @@ import GooglePlaces
 import GoogleSignIn
 import IQKeyboardManagerSwift
 import FacebookCore
+import AuthenticationServices
+import Stripe
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate{
@@ -19,19 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                           
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        if let appLanguageCode = UserDefaults.standard.string(forKey: "appLanguage") {
-                    UserDefaults.standard.set([appLanguageCode], forKey: "AppleLanguages")
-            }
+        
+        StripeAPI.defaultPublishableKey = "pk_test_51PE3n1EDo3VmufhKdnPe1c9D8xZtZ0GCPjInAbJ5ZC0P5Tf114MMLXoe568Jo2Jw6KGkDdfBBMMJUhTrhk1P1zNc00dXqnS8PF"
         
         IQKeyboardManager.shared.enable = true
+        let appleIDData = KeychainHelper.standard.read(service: "com.app.kardder", account: "appleID")
         GIDSignIn.sharedInstance.restorePreviousSignIn{
             user, error in
-            if error == nil || user != nil {
+            if error == nil || user != nil || AccessToken.current != nil || appleIDData != nil {
                 Switcher.updateRootVC(status: true)
             }else{
                 Switcher.updateRootVC(status: false)
             }
         }
+    
         // Override point for customization after application launch.
         ApplicationDelegate.shared.application(
                   application,
@@ -43,6 +47,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
        
         return true
+    }
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+
+        if let navigationController = window?.rootViewController as? UINavigationController {
+
+            if navigationController.visibleViewController is CameraViewController {
+                return UIInterfaceOrientationMask.portrait
+            }
+            if navigationController.visibleViewController is CVideoViewController{
+                return UIInterfaceOrientationMask.portrait
+            }
+
+            else {
+                return UIInterfaceOrientationMask.all
+            }
+        }
+
+        return UIInterfaceOrientationMask.portrait
     }
 
     // MARK: UISceneSession Lifecycle

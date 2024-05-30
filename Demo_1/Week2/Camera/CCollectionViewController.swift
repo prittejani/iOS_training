@@ -39,7 +39,7 @@ class CCollectionViewController: UIViewController {
 extension CCollectionViewController : UICollectionViewDelegate,UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "LargeImageViewController") as! LargeImageViewController
+        let vc = cameraVideo.instantiateViewController(withIdentifier: "LargeImageViewController") as! LargeImageViewController
         vc.image = imageArray[indexPath.row]
         vc.getCurrentIndex = indexPath.row
         navigationController?.pushViewController(vc, animated: true)

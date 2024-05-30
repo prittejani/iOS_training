@@ -9,4 +9,6 @@ import UIKit
 
 class DiscoverCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var lblInfo: UILabel!
+    @IBOutlet weak var images: UIImageView!
 }

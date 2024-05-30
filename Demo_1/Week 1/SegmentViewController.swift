@@ -21,6 +21,8 @@ class SegmentViewController: UIViewController {
         segment.setTitle("Color Pellet", forSegmentAt: 1)
         mapView.isHidden = false
         colorPellet.isHidden = true
+        
+
     }
     
     @IBAction func segmentAction(_ sender: UISegmentedControl) {

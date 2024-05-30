@@ -55,13 +55,13 @@ class AudioViewController: UIViewController,AVAudioPlayerDelegate{
     
     @objc func setVolume() {
         let audioSession = AVAudioSession.sharedInstance()
-               do {
-                   try audioSession.setActive(true)
-                   let currentVolume = audioSession.outputVolume
-                   soundSlider.value = currentVolume
-               } catch {
-                   print("Error in sound\(error.localizedDescription)")
-               }
+        do {
+            try audioSession.setActive(true)
+            let currentVolume = audioSession.outputVolume
+            soundSlider.value = currentVolume
+        } catch {
+            print("Error in sound\(error.localizedDescription)")
+        }
     }
     
     @objc func changeAudioSlider(sender: UISlider, event:UIEvent){
@@ -87,7 +87,6 @@ class AudioViewController: UIViewController,AVAudioPlayerDelegate{
     
     func configure(){
         do{
-            print(audioFiles[index])
             let audioFileURL = audioFiles[index]
             audioName.text = "\(audioFiles[index].lastPathComponent)"
             print(audioFileURL)
@@ -117,7 +116,7 @@ class AudioViewController: UIViewController,AVAudioPlayerDelegate{
         audioDurationLabel.text = "\(formattedTimeFrom(seconds: audioPlayer.currentTime))"
     }
     
-
+    
     
     @IBAction func playAudio(_ sender: UIButton) {
         if isPlaying{
@@ -140,7 +139,7 @@ class AudioViewController: UIViewController,AVAudioPlayerDelegate{
             audioPlayer.currentTime = audioPlayer.currentTime
         }else if audioPlayer.currentTime < audioPlayer.duration{
             
-            audioPlayer.play()
+         //   audioPlayer.play()
         }
     }
     
@@ -151,7 +150,7 @@ class AudioViewController: UIViewController,AVAudioPlayerDelegate{
             
             audioPlayer.currentTime = audioPlayer.currentTime
         }else if audioPlayer.currentTime < audioPlayer.duration{
-            audioPlayer.play()
+          //  audioPlayer.play()
         }
     }
     
@@ -170,21 +169,23 @@ class AudioViewController: UIViewController,AVAudioPlayerDelegate{
     @IBAction func backWardAudio(_ sender: UIButton) {
         if index > 0 {
             index -= 1
+            playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             configure()
         }else{
-            index = 0
+            index = audioFiles.count - 1
+           playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             configure()
         }
     }
     
     @IBAction func forWardAudio(_ sender: UIButton) {
-        print(audioFiles[index])
         if index < audioFiles.count - 1 {
             index += 1
-            print(audioFiles[index])
+             playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             configure()
         }else{
             index = 0
+        playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             configure()
         }
     }
@@ -197,3 +198,4 @@ class AudioViewController: UIViewController,AVAudioPlayerDelegate{
         return String(format: "%02d:%02d", minutes, seconds)
     }
 }
+

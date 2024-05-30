@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5Z-lF-bfH">
-                                <rect key="frame" x="317" y="717" width="60" height="60"/>
+                                <rect key="frame" x="317" y="279" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="KYL-gQ-WtF"/>
                                     <constraint firstAttribute="width" constant="60" id="kcq-nz-FDl"/>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKr-RN-6gm">
-                                <rect key="frame" x="317" y="641" width="60" height="60"/>
+                                <rect key="frame" x="317" y="203" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="5Jg-BD-pEk"/>
                                     <constraint firstAttribute="height" constant="60" id="6ER-I1-VsB"/>
@@ -72,59 +72,31 @@
                                     <action selector="destinationTapped:" destination="Y6W-OH-hqX" eventType="editingDidEnd" id="GNw-XC-IBT"/>
                                 </connections>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dne-gQ-78X">
-                                <rect key="frame" x="110" y="103" width="283" height="749"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Drawer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBA-FS-G81">
-                                        <rect key="frame" x="82.666666666666657" y="364" width="118" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.6262643663154146" green="1" blue="0.78316196202883648" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="749" id="BsK-rn-yfi"/>
-                                    <constraint firstItem="tBA-FS-G81" firstAttribute="centerX" secondItem="Dne-gQ-78X" secondAttribute="centerX" id="DSa-mb-9Ca"/>
-                                    <constraint firstItem="tBA-FS-G81" firstAttribute="centerY" secondItem="Dne-gQ-78X" secondAttribute="centerY" id="DcW-6g-pkW"/>
-                                    <constraint firstAttribute="width" constant="283" id="Vce-NE-Gpq"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="AKr-RN-6gm" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="538" id="0Sj-BA-QsC"/>
+                            <constraint firstItem="AKr-RN-6gm" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="0Sj-BA-QsC"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="x5Z-lF-bfH" secondAttribute="trailing" constant="16" id="1ym-pA-1Pb"/>
                             <constraint firstItem="3hy-pe-PbA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Eji-GO-0ie"/>
                             <constraint firstItem="3hy-pe-PbA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Eqo-kF-6nt"/>
                             <constraint firstItem="u4O-Rd-fhm" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="Hbd-px-V83"/>
-                            <constraint firstAttribute="bottom" secondItem="Dne-gQ-78X" secondAttribute="bottom" id="LJ7-GS-Axg"/>
                             <constraint firstItem="emc-tS-ngX" firstAttribute="top" secondItem="u4O-Rd-fhm" secondAttribute="bottom" constant="8" symbolic="YES" id="MXw-1Q-a6P"/>
                             <constraint firstItem="3hy-pe-PbA" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="To2-Dd-Xj1"/>
                             <constraint firstItem="emc-tS-ngX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ZYM-3k-KuI"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="emc-tS-ngX" secondAttribute="trailing" constant="16" id="bFB-Db-I2B"/>
-                            <constraint firstItem="Dne-gQ-78X" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="bic-6c-dOc"/>
                             <constraint firstItem="u4O-Rd-fhm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="fDB-Ct-Kqg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="u4O-Rd-fhm" secondAttribute="trailing" constant="16" id="gCf-ex-3pm"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="AKr-RN-6gm" secondAttribute="trailing" constant="16" id="iNL-Q6-dWR"/>
                             <constraint firstItem="x5Z-lF-bfH" firstAttribute="top" secondItem="AKr-RN-6gm" secondAttribute="bottom" constant="16" id="lj5-dN-p6v"/>
-                            <constraint firstItem="Dne-gQ-78X" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="pj6-lT-wMz"/>
                             <constraint firstItem="3hy-pe-PbA" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="xBp-Qg-bze"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Google Map" id="OqQ-at-G6w">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.3.horizontal" catalog="system" id="LHI-eX-ULa">
-                            <connections>
-                                <action selector="drawerButton:" destination="Y6W-OH-hqX" id="3GO-Og-LBa"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Google Map" id="OqQ-at-G6w"/>
                     <connections>
                         <outlet property="currentLocation" destination="x5Z-lF-bfH" id="veK-wS-kMQ"/>
                         <outlet property="destinationLocationField" destination="emc-tS-ngX" id="sC1-Rl-qKo"/>
                         <outlet property="displayMap" destination="3hy-pe-PbA" id="7oH-VL-yvb"/>
-                        <outlet property="drawerView" destination="Dne-gQ-78X" id="tsS-8S-eg8"/>
                         <outlet property="searchRouteButton" destination="AKr-RN-6gm" id="iRo-mT-Xx3"/>
                         <outlet property="sourceLocationField" destination="u4O-Rd-fhm" id="b5g-99-mB0"/>
                     </connections>
@@ -153,7 +125,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <image name="location.fill" catalog="system" width="128" height="119"/>
         <image name="routes" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">

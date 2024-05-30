@@ -60,7 +60,7 @@ class TableDataViewController: UIViewController,UITableViewDelegate,UITableViewD
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){ [self](action,view,handler) in
-            let alert = UIAlertController(title: "Are you sure?", message: "you want to delete this record", preferredStyle: .alert)
+            let alert = UIAlertController(title: "do you want to delete this record?", message: "", preferredStyle: .alert)
                 
             let yes = UIAlertAction(title: "Yes", style: .destructive,handler: {(action) in
                 self.db.delete(id: users[indexPath.row].id)
