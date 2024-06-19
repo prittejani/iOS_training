@@ -78,13 +78,13 @@ class SMSViewController: UIViewController,MFMessageComposeViewControllerDelegate
         let predicate = NSPredicate(format:"SELF MATCHES %@", regex)
         return predicate.evaluate(with: input)
     }
-    func customAlert(title:String,message:String){
-        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
-
-        let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(saveAction)
-        present(alert, animated: true)
-    }
+//    func customAlert(title:String,message:String){
+//        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
+//
+//        let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        alert.addAction(saveAction)
+//        present(alert, animated: true)
+//    }
 
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         dismiss(animated: true, completion: nil)

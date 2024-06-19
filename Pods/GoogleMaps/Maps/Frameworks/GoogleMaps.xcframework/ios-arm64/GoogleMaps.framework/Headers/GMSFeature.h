@@ -22,6 +22,7 @@ FOUNDATION_EXPORT GMSFeatureType const GMSFeatureTypeLocality;
 FOUNDATION_EXPORT GMSFeatureType const GMSFeatureTypePostalCode;
 FOUNDATION_EXPORT GMSFeatureType const GMSFeatureTypeSchoolDistrict;
 
+FOUNDATION_EXPORT GMSFeatureType const GMSFeatureTypeDataset;
 /**
  * An interface representing a feature's metadata.
  *

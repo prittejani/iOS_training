@@ -11,6 +11,24 @@
 				<string>com.googleusercontent.apps.362758248474-4damkmmk73er303861i2ffr0djp4ptnq</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.15140116916-fkpegehbq1nge5c4cosho97nrufi7dtu</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Bundle ID</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.app.pocketcoach</string>
+			</array>
+		</dict>
 	</array>
 	<key>FacebookAppID</key>
 	<string>1600294437387960</string>
@@ -19,7 +37,7 @@
 	<key>FacebookDisplayName</key>
 	<string>Demo App</string>
 	<key>GIDClientID</key>
-	<string>362758248474-4damkmmk73er303861i2ffr0djp4ptnq.apps.googleusercontent.com</string>
+	<string>15140116916-fkpegehbq1nge5c4cosho97nrufi7dtu.apps.googleusercontent.com</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -31,6 +49,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Allow to sent notifications</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -50,11 +70,21 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 	<key>com.apple.developer.applesignin</key>
 	<array>
 		<string>Default</string>
 	</array>
 	<key>kTCCServiceMediaLibrary</key>
 	<string>Access to music</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Allow to use speech recognization</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow to use camera</string>
 </dict>
 </plist>

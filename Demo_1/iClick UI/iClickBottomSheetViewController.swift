@@ -14,7 +14,7 @@ class iClickBottomSheetViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let settingName = ["Collections","Comment Likes","Followers","Likes","Donate"]
     
-    @IBOutlet weak var closeButton: UIImageView!
+   
     
     
     override func viewDidLoad() {
@@ -28,17 +28,12 @@ class iClickBottomSheetViewController: UIViewController {
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         
-        closeButton.layer.cornerRadius = closeButton.frame.size.height/2
-        closeButton.clipsToBounds = true
-        closeButton.layer.borderWidth = 1.0
-        closeButton.layer.borderColor = UIColor.systemGray5.cgColor
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onCloseButtonTapped(_:)))
-        closeButton.addGestureRecognizer(tapGestureRecognizer)
+  
     }
-    @objc func onCloseButtonTapped(_ sender : UITapGestureRecognizer){
-     
+    @IBAction func onCloseTapped(_ sender: UIButton) {
         self.dismiss(animated: true)
     }
+    
 }
 extension iClickBottomSheetViewController:UITableViewDelegate,UITableViewDataSource{
     

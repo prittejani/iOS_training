@@ -12,6 +12,11 @@ import SDWebImage
 import FacebookLogin
 import FBSDKLoginKit
 import AuthenticationServices
+import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseAnalytics
+
 
 let week1StoryBoard = UIStoryboard(name: "Main", bundle: nil)
 let week2StoryBoard = UIStoryboard(name: "tabbar", bundle: nil)
@@ -24,11 +29,19 @@ let payment = UIStoryboard(name: "payment", bundle: nil)
 let iClick = UIStoryboard(name: "iClick", bundle: nil)
 let week9 = UIStoryboard(name: "week9", bundle: nil)
 
+let week10 = UIStoryboard(name: "week10", bundle: nil)
+
+let mvvm = UIStoryboard(name: "mvvm", bundle: nil)
+
 class weekwisedemoViewController: UIViewController{
     var weekNameArray = Array<String>()
     @IBOutlet weak var drawerView: UIView!
     var menu:SideMenuNavigationController!
     var isDrawerOpened = false
+    
+    @IBOutlet var drawerButton: UIBarButtonItem!
+    @IBOutlet var backViewDrawer: UIView!
+    var firebaseFireStore = Firestore.firestore()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userImg: UIImageView!
@@ -39,12 +52,20 @@ class weekwisedemoViewController: UIViewController{
     @IBOutlet weak var userEmail: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //do {
+           // try Auth.auth().signOut()
+          //  LoginManager().logOut()
+          //  Switcher.updateRootVC(status: false)
+//        } catch let signOutError as NSError {
+//          print("facebook Error signing out: %@", signOutError)
+//        }
+
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         
-        weekNameArray = ["Week 1","Week 2","Week 3","Week 4","Week 5","Week 6","Week 7","Week 8","iClick UI","Week 9"]
+        weekNameArray = ["Week 1","Week 2","Week 3","Week 4","Week 5","Week 6","Week 7","Week 8","iClick UI","Week 9","Week 10","Week 11"]
         
         let checkLogin = UserDefaults.standard.string(forKey: "loginForm")
         if checkLogin == "viaGoogle"{
@@ -52,18 +73,25 @@ class weekwisedemoViewController: UIViewController{
         }else if checkLogin == "viaApple"{
     
             viaApple()
+        }else if checkLogin == "viaFirebase"{
+            viaFirebase()
         }else{
             viaFacebook()
         }
+        drawerView.layer.cornerRadius = 10.0
         drawerView.isHidden = true
         isDrawerOpened = false
         
         userImg.layer.cornerRadius = userImg.frame.width/2
         userImg.clipsToBounds = true
         
-        //    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onviewTapped(_ :))))
-    
+            backViewDrawer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onviewTapped(_ :))))
+        
     }
+    
+    
+     
+    
     @objc func onviewTapped(_ sender:UITapGestureRecognizer){
         print("view tapped")
         if isDrawerOpened{
@@ -94,6 +122,9 @@ class weekwisedemoViewController: UIViewController{
             drawerView.isHidden = true
             isDrawerOpened = false
         }else{
+            UIView.animate(withDuration: 1.8, animations: {
+                self.drawerView.transform = CGAffineTransform(translationX: 0, y: 0)
+            })
             drawerView.isHidden = false
             isDrawerOpened = true
         }
@@ -106,13 +137,16 @@ class weekwisedemoViewController: UIViewController{
                  let userID = String(data: userIDData, encoding: .utf8) {
             
                   print("Retrieved userID: \(userID)")
+            print("Apple uid \(userID)")
             if let familyNameData = KeychainHelper.standard.read(service: "com.app.pocketcoach", account: "givenName"),
                      let familyName = String(data: familyNameData, encoding: .utf8) {
                   self.userName.text = "\(familyName)"
+                print("Apple name \(familyName)")
                   }
             if let emailData = KeychainHelper.standard.read(service: "com.app.pocketcoach", account: "email"),
                      let email = String(data: emailData, encoding: .utf8) {
                 self.userEmail.text = "\(email)"
+                print("Apple Email \(email)")
                   }
               }
     }
@@ -130,13 +164,15 @@ class weekwisedemoViewController: UIViewController{
             }
         }
     }
+    
+
     func viaFacebook(){
             GraphRequest(graphPath: "me", parameters: ["fields":"email,name,picture.type(large)"]).start{
                     (connection,result,error) in
                     if let userData = result as? [String: Any] {
                         let email = userData["email"]
                         let name = userData["name"]
-                        let id = userData["id"]
+                     //   let id = userData["id"]
                         
                         self.userName.text = "\(name!)"
                         self.userEmail.text = "\(email!)"
@@ -152,7 +188,23 @@ class weekwisedemoViewController: UIViewController{
                      }
                 }
     }
-    
+    func viaFirebase(){
+        let currentUser = Auth.auth().currentUser
+        if let currentUserId = currentUser?.uid {
+           
+                firebaseFireStore.collection("users").document(currentUserId).getDocument{
+                    firebaseFireStoreDocumentSnapShot, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    if let firebaseFireStoreDocumentSnapShot = firebaseFireStoreDocumentSnapShot{
+                        self.userName.text = "\(firebaseFireStoreDocumentSnapShot.data()!["name"] as! String)"
+                        self.userEmail.text = "\(firebaseFireStoreDocumentSnapShot.data()!["email"] as! String)"
+                    }
+                }
+           
+        }
+    }
     @IBAction func onLogoutTapped(_ sender: UIButton) {
         
         signout()
@@ -162,21 +214,52 @@ class weekwisedemoViewController: UIViewController{
         let checkLogin = UserDefaults.standard.string(forKey: "loginForm")
         if checkLogin == "viaGoogle"{
             Switcher.updateRootVC(status: false)
-            GIDSignIn.sharedInstance.signOut()
+            do {
+                try Auth.auth().signOut()
+                GIDSignIn.sharedInstance.signOut()
+            } catch let signOutError as NSError {
+              print("Google Error signing out: %@", signOutError)
+            }
+           
            
         }else if checkLogin == "viaFacebook"{
-            Switcher.updateRootVC(status: false)
-            LoginManager().logOut()
+            
+            do {
+                try Auth.auth().signOut()
+                LoginManager().logOut()
+                Switcher.updateRootVC(status: false)
+            } catch let signOutError as NSError {
+              print("facebook Error signing out: %@", signOutError)
+            }
+           
         }else if checkLogin == "viaApple"{
-            Switcher.updateRootVC(status: false)
-            let request = ASAuthorizationAppleIDProvider().createRequest()
-            request.requestedOperation = .operationLogout
-            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-            authorizationController.performRequests()
-            print("apple logout")
-            KeychainHelper.standard.delete(service: "com.app.kardder", account: "appleID")
-            KeychainHelper.standard.delete(service: "com.app.kardder", account: "givenName")
-            KeychainHelper.standard.delete(service: "com.app.kardder", account: "email")
+          
+            do {
+                try Auth.auth().signOut()
+                let request = ASAuthorizationAppleIDProvider().createRequest()
+                request.requestedOperation = .operationLogout
+                let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+                authorizationController.performRequests()
+                 KeychainHelper.standard.delete(service: "com.app.pocketcoach", account: "appleID")
+                 KeychainHelper.standard.delete(service: "com.app.pocketcoach", account: "givenName")
+                 KeychainHelper.standard.delete(service: "com.app.pocketcoach", account: "email")
+                Switcher.updateRootVC(status: false)
+                print("apple logout")
+            } catch let signOutError as NSError {
+              print("apple Error signing out: %@", signOutError)
+            }
+           
+           
+        }else if checkLogin == "viaFirebase"{
+            do {
+                try Auth.auth().signOut()
+                Switcher.updateRootVC(status: false)
+                print("email/password logout")
+                
+            }catch let signOutError as NSError {
+                print("email/password Error signing out: %@", signOutError)
+              }
+             
         }
         
     }
@@ -351,10 +434,19 @@ extension weekwisedemoViewController:UITableViewDelegate,UITableViewDataSource{
             let vc = payment.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
             navigationController?.pushViewController(vc, animated: true)
         }else if indexPath.row == 8 {
-            let vc = iClick.instantiateViewController(withIdentifier: "iClickTabbarViewController") as! iClickTabbarViewController
+            let vc = iClick.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
             navigationController?.pushViewController(vc, animated: true)
+//            let vc = iClick.instantiateViewController(withIdentifier: "smitViewController") as! NotchTabbarViewController
+//            navigationController?.pushViewController(vc, animated: true)
         }else if indexPath.row == 9 {
-            let vc = week9.instantiateViewController(withIdentifier: "ScanHomeViewController") as! ScanHomeViewController
+            let vc = week9.instantiateViewController(withIdentifier: "week9ViewController") as! week9ViewController
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if indexPath.row == 10 {
+            let vc = week10.instantiateViewController(withIdentifier: "Week10ViewController") as! Week10ViewController
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 11 {
+            let vc = week11.instantiateViewController(withIdentifier: "LocalNotificationViewController") as! LocalNotificationViewController
             navigationController?.pushViewController(vc, animated: true)
         }
     }

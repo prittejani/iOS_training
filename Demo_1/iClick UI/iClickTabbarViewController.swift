@@ -8,11 +8,11 @@
 import UIKit
 
 class iClickTabbarViewController: UITabBarController {
-    let middleButton = UIButton()
+    let middleButton = GradientButton()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBar.tintColor = UIColor(red: 136/255, green: 139/255, blue: 244/255, alpha: 1)
-     setupMiddleButton()
+     //setupMiddleButton()
     }
     override func viewWillLayoutSubviews() {
          super.viewWillLayoutSubviews()
@@ -26,20 +26,31 @@ class iClickTabbarViewController: UITabBarController {
 
     func setupMiddleButton() {
         
-         middleButton.frame = CGRect(x: (self.tabBar.frame.width / 2) - 25 , y: -20, width: 50, height: 50)
-       
-        middleButton.backgroundColor = UIColor(red: 136/255, green: 139/255, blue: 244/255, alpha: 1)
-             middleButton.layer.cornerRadius = 25
-             middleButton.setImage(UIImage(systemName: "plus"), for: .normal)
-             middleButton.tintColor = .white
-             
-             // Add the button to the tab bar
-             self.tabBar.addSubview(middleButton)
-             
-             // Bring the button to the front
-             self.tabBar.bringSubviewToFront(middleButton)
-             
-           self.view.layoutIfNeeded()
+        middleButton.frame = CGRect(x: (self.tabBar.frame.width / 2) - 25 , y: -20, width: 50, height: 50)
+        middleButton.layer.cornerRadius = 25
+        middleButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        middleButton.tintColor = .white
+        self.tabBar.addSubview(middleButton)
+        self.tabBar.bringSubviewToFront(middleButton)
+        self.view.layoutIfNeeded()
    }
    
+}
+
+
+extension UIColor {
+    convenience init(hex: String) {
+        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+
+        var rgb: UInt64 = 0
+
+        Scanner(string: hexSanitized).scanHexInt64(&rgb)
+
+        let red = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(rgb & 0x0000FF) / 255.0
+
+        self.init(red: red, green: green, blue: blue, alpha: 1.0)
+    }
 }

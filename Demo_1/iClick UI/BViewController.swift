@@ -6,11 +6,9 @@
 //
 
 import UIKit
-import MaterialComponents
+
 
 class BViewController: UIViewController {
-    let bottomAppBar = MDCBottomAppBarView()
-    var floatingButton = MDCFloatingButton()
  
     override func viewDidLoad() {
         super.viewDidLoad()

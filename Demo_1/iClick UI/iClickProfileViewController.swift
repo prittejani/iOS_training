@@ -50,8 +50,8 @@ class iClickProfileViewController: UIViewController,CHTCollectionViewDelegateWat
         profileTabView.segmentsCornerRadius = 10.0
         profileFollowView.layer.cornerRadius = 10.0
         profileFollowView.clipsToBounds = true
-        
-        profileTabView.selectedTextFont = UIFont.systemFont(ofSize: 17,weight: .bold)
+//        
+//        profileTabView.selectedTextFont = UIFont.systemFont(ofSize: 17,weight: .bold)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -52,27 +52,47 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="e2J-xT-EH8">
                                 <rect key="frame" x="16" y="322.33333333333331" width="361" height="207.33333333333331"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYT-cA-4VV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Features access in just $9.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYT-cA-4VV">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="52"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbr-E0-yaC">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PcM-9f-NTh">
                                         <rect key="frame" x="0.0" y="52" width="361" height="51.666666666666657"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Add Monthly Subscription"/>
-                                        <connections>
-                                            <action selector="addMonthlySubscription:" destination="v1z-OU-k4Y" eventType="touchUpInside" id="lpw-Lf-Tbu"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leP-Rf-TbO">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbr-E0-yaC">
+                                                <rect key="frame" x="0.0" y="0.0" width="361" height="51.666666666666664"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Add Monthly Subscription"/>
+                                                <connections>
+                                                    <action selector="addMonthlySubscription:" destination="v1z-OU-k4Y" eventType="touchUpInside" id="lpw-Lf-Tbu"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already Purchased" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qw2-Du-Rzc">
+                                                <rect key="frame" x="109.00000000000001" y="15.666666666666684" width="143.33333333333337" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Wbr-E0-yaC" secondAttribute="bottom" id="6Jz-jd-we4"/>
+                                            <constraint firstItem="Wbr-E0-yaC" firstAttribute="top" secondItem="PcM-9f-NTh" secondAttribute="top" id="7oZ-eA-ewA"/>
+                                            <constraint firstItem="Qw2-Du-Rzc" firstAttribute="centerY" secondItem="PcM-9f-NTh" secondAttribute="centerY" id="NAW-Ig-H6g"/>
+                                            <constraint firstItem="Wbr-E0-yaC" firstAttribute="leading" secondItem="PcM-9f-NTh" secondAttribute="leading" id="W7o-ky-PT6"/>
+                                            <constraint firstAttribute="trailing" secondItem="Wbr-E0-yaC" secondAttribute="trailing" id="ZqW-gd-mPI"/>
+                                            <constraint firstItem="Qw2-Du-Rzc" firstAttribute="centerX" secondItem="PcM-9f-NTh" secondAttribute="centerX" id="bgA-sh-Utc"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase Date : " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leP-Rf-TbO">
                                         <rect key="frame" x="0.0" y="103.6666666666667" width="361" height="51.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dg-Pc-Dqs">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expire Date :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dg-Pc-Dqs">
                                         <rect key="frame" x="0.0" y="155.33333333333337" width="361" height="52"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -82,46 +102,29 @@
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstItem="iYT-cA-4VV" firstAttribute="height" secondItem="e2J-xT-EH8" secondAttribute="height" multiplier="0.25" id="4mm-t3-zlI"/>
+                                    <constraint firstItem="PcM-9f-NTh" firstAttribute="height" secondItem="e2J-xT-EH8" secondAttribute="height" multiplier="0.25" id="AUW-0L-1Sa"/>
                                     <constraint firstItem="6Dg-Pc-Dqs" firstAttribute="leading" secondItem="e2J-xT-EH8" secondAttribute="leading" id="PCb-3f-nNI"/>
                                     <constraint firstAttribute="trailing" secondItem="6Dg-Pc-Dqs" secondAttribute="trailing" id="X2X-Ul-tKc"/>
                                     <constraint firstAttribute="bottom" secondItem="6Dg-Pc-Dqs" secondAttribute="bottom" id="bkb-OU-Bus"/>
                                     <constraint firstItem="leP-Rf-TbO" firstAttribute="height" secondItem="e2J-xT-EH8" secondAttribute="height" multiplier="0.25" id="eFR-oL-S9n"/>
-                                    <constraint firstItem="Wbr-E0-yaC" firstAttribute="height" secondItem="e2J-xT-EH8" secondAttribute="height" multiplier="0.25" id="xOb-O9-dJR"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KZf-VZ-bRP">
-                                <rect key="frame" x="0.0" y="59" width="393" height="219"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Fmu-6L-gAX">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fmu-6L-gAX" id="Sm7-85-7Ro">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NnN-RO-y7a"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="e2J-xT-EH8" firstAttribute="centerY" secondItem="jpo-ck-7Z5" secondAttribute="centerY" id="2Ca-z7-T39"/>
-                            <constraint firstItem="KZf-VZ-bRP" firstAttribute="leading" secondItem="NnN-RO-y7a" secondAttribute="leading" id="A0S-eW-Sgi"/>
                             <constraint firstItem="e2J-xT-EH8" firstAttribute="width" secondItem="jpo-ck-7Z5" secondAttribute="width" multiplier="0.918575" id="Dey-o5-Xxm"/>
                             <constraint firstItem="e2J-xT-EH8" firstAttribute="height" secondItem="jpo-ck-7Z5" secondAttribute="height" multiplier="0.243192" id="I1P-BB-TBa"/>
-                            <constraint firstItem="KZf-VZ-bRP" firstAttribute="trailing" secondItem="NnN-RO-y7a" secondAttribute="trailing" id="uSg-Dd-0oK"/>
                             <constraint firstItem="e2J-xT-EH8" firstAttribute="centerX" secondItem="jpo-ck-7Z5" secondAttribute="centerX" id="uoN-NB-WMP"/>
-                            <constraint firstItem="e2J-xT-EH8" firstAttribute="top" secondItem="KZf-VZ-bRP" secondAttribute="bottom" constant="44.329999999999998" id="wZd-W4-TFo"/>
-                            <constraint firstItem="KZf-VZ-bRP" firstAttribute="top" secondItem="NnN-RO-y7a" secondAttribute="top" id="xPy-Z5-AGM"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="lblProductName" destination="iYT-cA-4VV" id="LQP-2X-5AV"/>
-                        <outlet property="lblPurchaseStartDate" destination="6Dg-Pc-Dqs" id="93E-AO-Whn"/>
+                        <outlet property="lblPurchaseStartDate" destination="leP-Rf-TbO" id="wTD-Ts-0Ff"/>
                         <outlet property="lblPurchseEndDate" destination="6Dg-Pc-Dqs" id="yQ4-8Z-Hoy"/>
-                        <outlet property="tableView" destination="KZf-VZ-bRP" id="cEZ-dN-kDY"/>
+                        <outlet property="purchaseButton" destination="Wbr-E0-yaC" id="gah-Ow-i4O"/>
+                        <outlet property="purchaseLabel" destination="Qw2-Du-Rzc" id="BJD-Ob-IlF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ET-hN-j7g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

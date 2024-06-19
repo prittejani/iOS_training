@@ -135,13 +135,13 @@ class VideoListViewController: UIViewController,UIDocumentPickerDelegate{
 //            customAlert(title: "Alert!!", message: "You have not permission to view it")
 //        }
 //    }
-    func customAlert(title:String,message:String){
-        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
-
-        let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(saveAction)
-        present(alert, animated: true)
-    }
+//    func customAlert(title:String,message:String){
+//        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
+//
+//        let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        alert.addAction(saveAction)
+//        present(alert, animated: true)
+//    }
 }
 extension VideoListViewController:UITableViewDelegate,UITableViewDataSource{
     
@@ -150,7 +150,7 @@ extension VideoListViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return videoFiles.count
+       return videosThumb.count
 
     }
     

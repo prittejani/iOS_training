@@ -15,6 +15,7 @@ class QRScannerViewController: UIViewController,AVCaptureMetadataOutputObjectsDe
        var previewLayer: AVCaptureVideoPreviewLayer!
       var passQRContent: ((String) -> Void)?
        override func viewDidLoad() {
+           
            super.viewDidLoad()
       
            captureSession = AVCaptureSession()
@@ -106,11 +107,11 @@ class QRScannerViewController: UIViewController,AVCaptureMetadataOutputObjectsDe
        override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
            return .portrait
        }
-    func customAlert(title:String,message:String){
-        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
-
-        let saveAction = UIAlertAction(title: "OK", style: .default,handler: nil)
-        alert.addAction(saveAction)
-        present(alert, animated: true)
-    }
+//    func customAlert(title:String,message:String){
+//        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
+//
+//        let saveAction = UIAlertAction(title: "OK", style: .default,handler: nil)
+//        alert.addAction(saveAction)
+//        present(alert, animated: true)
+//    }
 }

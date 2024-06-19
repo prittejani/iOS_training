@@ -9,6 +9,8 @@
 #import <GoogleMaps/GMSCircle.h>
 #import <GoogleMaps/GMSCollisionBehavior.h>
 #import <GoogleMaps/GMSCoordinateBounds+GoogleMaps.h>
+#import <GoogleMaps/GMSDatasetFeature.h>
+#import <GoogleMaps/GMSDatasetFeatureLayer.h>
 #import <GoogleMaps/GMSFeature.h>
 #import <GoogleMaps/GMSFeatureLayer.h>
 #import <GoogleMaps/GMSFeatureStyle.h>

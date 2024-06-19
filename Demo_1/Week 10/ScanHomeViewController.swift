@@ -16,7 +16,7 @@ class ScanHomeViewController: UIViewController {
     }
     
     @IBAction func onScanTapped(_ sender: UIButton) {
-        let vc = week9.instantiateViewController(withIdentifier: "QRScannerViewController") as! QRScannerViewController
+        let vc = week10.instantiateViewController(withIdentifier: "QRScannerViewController") as! QRScannerViewController
         vc.passQRContent = {
             (content) in
             self.lblQRContent.isHidden = false

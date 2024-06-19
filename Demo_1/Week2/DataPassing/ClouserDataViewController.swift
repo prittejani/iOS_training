@@ -30,9 +30,9 @@ class ClouserDataViewController: UIViewController {
     @IBAction func btnSave(_ sender: Any) {
         if let text = name.text {
             if name.text == ""{
-                customAlert(title: "Alert", message: "Please enter name")
+                self.customAlert(title: "Alert", message: "Please enter name")
             }else if !validateName(text){
-                customAlert(title: "Alert", message: "Please enter valid name")
+                self.customAlert(title: "Alert", message: "Please enter valid name")
             }
             else{
                 clousers?(text)
@@ -43,11 +43,18 @@ class ClouserDataViewController: UIViewController {
         
     }
     
-    func customAlert(title:String,message:String){
-        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
+ 
+}
 
+
+extension UIViewController {
+    func customAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
         let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(saveAction)
-        present(alert, animated: true)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
+

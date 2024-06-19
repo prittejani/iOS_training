@@ -21,11 +21,10 @@ target 'Demo_1' do
   pod 'SVProgressHUD'
   pod 'Stripe', '~> 22.8'
   pod 'LGSegmentedControl'
-  pod 'MaterialComponents'
   pod 'CHTCollectionViewWaterfallLayout'
-  pod 'SendGrid', '~>  0.2.6'
+  pod 'TPPDF'
   pod 'SwiftyStoreKit'
-
+  pod 'STTabbar'
 
   target 'Demo_1Tests' do
     inherit! :search_paths
@@ -37,3 +36,10 @@ target 'Demo_1' do
   end
 
 end
+post_install do |installer|
+    installer.pods_project.build_configurations.each do |config|
+        config.build_settings.delete('CODE_SIGNING_ALLOWED')
+        config.build_settings.delete('CODE_SIGNING_REQUIRED')
+    end
+end
+

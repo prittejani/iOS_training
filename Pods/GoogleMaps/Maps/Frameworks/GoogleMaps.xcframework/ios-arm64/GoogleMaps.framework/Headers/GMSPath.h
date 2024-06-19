@@ -69,7 +69,7 @@ extern const double kGMSEquatorProjectedMeter;
 typedef NS_ENUM(NSUInteger, GMSLengthKind) {
   /*
    * Geodesic length, in meters, along geodesic segments. May be useful, for example, to specify
-   * lengths along the the trajectory of airplanes or ships.
+   * lengths along the trajectory of airplanes or ships.
    */
   kGMSLengthGeodesic,
 

@@ -7,7 +7,7 @@
 
 import UIKit
 import MessageUI
-import SendGrid
+//import SendGrid
 
 class EmailViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate,MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
     var email:String!
@@ -115,20 +115,20 @@ class EmailViewController: UIViewController,UITextViewDelegate,UITextFieldDelega
     
     @IBAction func sendViaThirdParty(_ sender: UIButton) {
         
-        let sendGrid = SendGridService()
-        if toMail.hasText == true && subject.hasText == true && body.hasText == true {
-             email = toMail.text
-            subjectOfMail = subject.text
-            bodyOfMail = body.text
-            if isValidEmail(email: email) == false {
-                customAlert(title: "Alert!!", message: "Email is not valid")
-            }else{
-                sendGrid.sendEmail(to: email, subject: subjectOfMail, body: "\(bodyOfMail!)")
-                customAlert(title: "Done", message: "Mail Sent Successfully to \(email!)")
-            }
-        }else{
-            customAlert(title: "Alert!!", message: "All Field is required")
-        }
+//        let sendGrid = SendGridService()
+//        if toMail.hasText == true && subject.hasText == true && body.hasText == true {
+//             email = toMail.text
+//            subjectOfMail = subject.text
+//            bodyOfMail = body.text
+//            if isValidEmail(email: email) == false {
+//                customAlert(title: "Alert!!", message: "Email is not valid")
+//            }else{
+//                sendGrid.sendEmail(to: email, subject: subjectOfMail, body: "\(bodyOfMail!)")
+//                customAlert(title: "Done", message: "Mail Sent Successfully to \(email!)")
+//            }
+//        }else{
+//            customAlert(title: "Alert!!", message: "All Field is required")
+//        }
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
@@ -140,11 +140,11 @@ class EmailViewController: UIViewController,UITextViewDelegate,UITextFieldDelega
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
-    func customAlert(title:String,message:String){
-        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
-
-        let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(saveAction)
-        present(alert, animated: true)
-    }
+//    func customAlert(title:String,message:String){
+//        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
+//
+//        let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        alert.addAction(saveAction)
+//        present(alert, animated: true)
+//    }
 }

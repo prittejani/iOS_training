@@ -2,6 +2,7 @@ module GoogleMapsCore {
   export *
   link "m"
   link "z"
+  link framework "Contacts"
   link framework "CoreData"
   link framework "CoreFoundation"
   link framework "CoreGraphics"

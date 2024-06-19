@@ -14,7 +14,7 @@ class CategoryCustomFlow : UICollectionViewFlowLayout{
             let itemWidth = collectionView.bounds.width
             _ = itemWidth
             
-            itemSize = CGSize(width: collectionView.bounds.width / 2, height: collectionView.bounds.width / 3)
+            itemSize = CGSize(width: collectionView.bounds.width / 2, height: collectionView.bounds.height / 3)
             minimumLineSpacing = 0
             minimumInteritemSpacing = 0
             scrollDirection = .vertical
@@ -23,24 +23,68 @@ class CategoryCustomFlow : UICollectionViewFlowLayout{
 }
 class SelectCategoryViewController: UIViewController {
 
+    @IBOutlet var lblShare_inspire_connect: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
 
-    @IBOutlet weak var exploreButton: UIButton!
+    @IBOutlet var lblWhoareyou: UILabel!
+    @IBOutlet var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet var stackViewBottom: NSLayoutConstraint!
+    @IBOutlet var stackView: UIStackView!
+    @IBOutlet weak var ExploreButton: UIButton!
     var categoryImageArray = ["card1","card2","card3","card4"]
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.collectionViewLayout = CategoryCustomFlow()
-        exploreButton.layer.cornerRadius = exploreButton.frame.size.height/2
-        exploreButton.clipsToBounds  = true
+        ExploreButton.layer.cornerRadius = ExploreButton.frame.size.height/2
+        ExploreButton.clipsToBounds  = true
+        
+        let gradientImage = UIImage.gradientImageWithBounds(bounds: lblShare_inspire_connect.bounds, colors: [UIColor(red: 136/255, green: 139/255, blue: 244/255, alpha: 1).cgColor, UIColor(red: 81/255, green: 81/255, blue: 198/255, alpha: 1).cgColor])
+        
+        lblShare_inspire_connect.textColor = UIColor.init(patternImage: gradientImage)
     }
     
+    @IBAction func onExploreClicked(_ sender: Any) {
+        let vc  = iClick.instantiateViewController(withIdentifier: "smitViewController") as! NotchTabbarViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        coordinator.animate(alongsideTransition: { [self] _ in
+            if UIDevice.current.orientation.isLandscape {
+                
+                print("landscape")
+                NSLayoutConstraint.deactivate(self.view.constraints.filter { $0.firstItem === self.ExploreButton && $0.firstAttribute == .height })
+                NSLayoutConstraint.activate([
+                    self.collectionView.heightAnchor.constraint(equalTo: self.stackView.heightAnchor, multiplier: 0.686599),
+                    self.lblWhoareyou.heightAnchor.constraint(equalTo: self.stackView.heightAnchor, multiplier: 0.079323),
+                    self.ExploreButton.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.0640845)
+                ])
+            
+            } else {
+                print("portrait")
+                
+                NSLayoutConstraint.deactivate(self.view.constraints.filter { $0.firstItem === self.ExploreButton && $0.firstAttribute == .height })
+                NSLayoutConstraint.activate([
+                    self.collectionView.heightAnchor.constraint(equalTo: self.stackView.heightAnchor, multiplier: 0.786599),
+                    self.lblWhoareyou.heightAnchor.constraint(equalTo: self.stackView.heightAnchor, multiplier: 0.059323),
+                    self.ExploreButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.0705739)
+                ])
+             
+            }
+
+            self.view.layoutIfNeeded()
+            
+        }, completion: nil)
+    }
+
 }
 extension SelectCategoryViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width/2.15, height: collectionView.bounds.height/2.3)
+        return CGSize(width: collectionView.bounds.width/2.12, height: collectionView.bounds.height/2.15)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

@@ -47,7 +47,7 @@ FOUNDATION_EXTERN UIImage *const kGMSTileLayerNoTile;
  * by subclasses. The tile for the given |x|, |y| and |zoom| _must_ be later passed to |receiver|.
  *
  * Specify kGMSTileLayerNoTile if no tile is available for this location; or nil if a transient
- * error occured and a tile may be available later.
+ * error occurred and a tile may be available later.
  *
  * Calls to this method will be made on the main thread. See GMSSyncTileLayer for a base class that
  * implements a blocking tile layer that does not run on your application's main thread.

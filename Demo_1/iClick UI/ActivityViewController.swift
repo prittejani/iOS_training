@@ -9,7 +9,7 @@ import UIKit
 
 class ActivityViewController: UIViewController{
 
-    var activityProfileImage = ["model1","model1","model1"]
+    var activityProfileImage:[UIImage] = [UIImage(named: "model1")!,UIImage(named: "model2")!,UIImage(named: "model3")!,UIImage(named: "model4")!]
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,12 +45,28 @@ class ActivityViewController: UIViewController{
 
 extension ActivityViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activityProfileImage.count
+        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ActivityTableViewCell
-        cell.userProfileImage.image = UIImage(named: activityProfileImage[indexPath.row])
+        cell.userProfileImage.image = activityProfileImage.randomElement()
+        if indexPath.row % 2 == 0 {
+            cell.likeIcon.isHidden = false
+            
+            cell.postedImage.contentMode = .scaleAspectFit
+            let texts = ["added", "liked"]
+            cell.lblLikedOrAdded.text = texts.randomElement()
+            cell.postedImage.image = UIImage(named: "w2")
+        }else{
+            cell.likeIcon.isHidden = true
+            cell.postedImage.contentMode = .center
+            let texts = ["added", "liked"]
+            cell.lblLikedOrAdded.text = texts.randomElement()
+            
+            cell.postedImage.image = UIImage(named: "followButton")
+        }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

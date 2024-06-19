@@ -26,27 +26,41 @@ class iClickHomeViewController: UIViewController {
         sendImageView.layer.cornerRadius = sendImageView.frame.width / 2
 
         searchView.layer.cornerRadius = searchView.frame.height / 2
+        searchView.clipsToBounds = true
         customSegmentView.segmentsCornerRadius = 8.0
         collectionView.delegate = self
         collectionView.dataSource = self
         TopView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+ 
    }
-    
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        super.viewWillTransition(to: size, with: coordinator)
-//        if UIDevice.current.orientation.isLandscape {
-//            TopView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.424251).isActive = true
-//            print("landscape")
-//            
-//        }else{
-//            TopView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.224251).isActive = true
-//            print("potrait")
-//    
-//        }
-//        self.view.layoutIfNeeded()
-//    }
-    
+  
+
+      
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        coordinator.animate(alongsideTransition: { _ in
+            if UIDevice.current.orientation.isLandscape {
+                print("landscape")
+                NSLayoutConstraint.deactivate(self.view.constraints.filter { $0.firstItem === self.TopView && $0.firstAttribute == .height })
+                NSLayoutConstraint.activate([
+                    self.TopView.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.224178)
+                ])
+            } else {
+                print("portrait")
+                NSLayoutConstraint.deactivate(self.view.constraints.filter { $0.firstItem === self.TopView && $0.firstAttribute == .height })
+                NSLayoutConstraint.activate([
+                    self.TopView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.224178)
+                ])
+            }
+            
+            // Force layout update
+            self.view.layoutIfNeeded()
+            
+        }, completion: nil)
+    }
 }
 
 extension iClickHomeViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{

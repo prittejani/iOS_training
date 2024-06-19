@@ -22,7 +22,7 @@ class BottomBarViewController: UIViewController {
     @IBOutlet weak var view3: UIView!
     @IBOutlet weak var middleButton: UIButton!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var tabbar: CustomTabBar!
+    @IBOutlet weak var tabbar: CustomTabBars!
     let greycolor:UIColor = .systemGray4
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = true
@@ -42,10 +42,11 @@ class BottomBarViewController: UIViewController {
     
    }
     func firstLoad (){
-        home.tintColor = UIColor(red: 136/255, green: 139/255, blue: 244/255, alpha: 1)
-        discover.tintColor = greycolor
-        activity.tintColor = greycolor
-        profile.tintColor = greycolor
+        home.image = UIImage(named: "Home")
+        discover.image = UIImage(named: "Category_light")
+        activity.image = UIImage(named: "Notification_light")
+        profile.image = UIImage(named: "Profile_light")
+
         guard let home = iClick.instantiateViewController(withIdentifier: "iClickHomeViewController") as? iClickHomeViewController else {return}
         contentView.addSubview(home.view)
         home.view.frame = contentView.bounds
@@ -54,20 +55,21 @@ class BottomBarViewController: UIViewController {
     @IBAction func onTabbarItemPressed(_ sender: UIButton) {
         let tag = sender.tag
         if tag == 1 {
-            home.tintColor = UIColor(red: 136/255, green: 139/255, blue: 244/255, alpha: 1)
-            discover.tintColor = greycolor
-            activity.tintColor = greycolor
-            profile.tintColor = greycolor
+            home.image = UIImage(named: "Home")
+            discover.image = UIImage(named: "Category_light")
+            activity.image = UIImage(named: "Notification_light")
+            profile.image = UIImage(named: "Profile_light")
             guard let home = iClick.instantiateViewController(withIdentifier: "iClickHomeViewController") as? iClickHomeViewController else {return}
             contentView.addSubview(home.view)
             home.view.frame = contentView.bounds
             home.didMove(toParent: self)
             
         }else if tag == 2 {
-            home.tintColor = greycolor
-            discover.tintColor = UIColor(red: 136/255, green: 139/255, blue: 244/255, alpha: 1)
-            activity.tintColor = greycolor
-            profile.tintColor = greycolor
+            home.image = UIImage(named: "Home_light")
+            discover.image = UIImage(named: "Category")
+            activity.image = UIImage(named: "Notification_light")
+            profile.image = UIImage(named: "Profile_light")
+
             guard let discover = iClick.instantiateViewController(withIdentifier: "DiscoverViewController") as? DiscoverViewController else {return}
             contentView.addSubview(discover.view)
             discover.view.frame = contentView.bounds
@@ -75,19 +77,21 @@ class BottomBarViewController: UIViewController {
 
             
         }else if tag == 3 {
-            home.tintColor = greycolor
-            discover.tintColor = greycolor
-            activity.tintColor = UIColor(red: 136/255, green: 139/255, blue: 244/255, alpha: 1)
-            profile.tintColor = greycolor
+            home.image = UIImage(named: "Home_light")
+            discover.image = UIImage(named: "Category_light")
+            activity.image = UIImage(named: "Notification")
+            profile.image = UIImage(named: "Profile_light")
+
             guard let activity = iClick.instantiateViewController(withIdentifier: "ActivityViewController") as? ActivityViewController else {return}
             contentView.addSubview(activity.view)
             activity.view.frame = contentView.bounds
             activity.didMove(toParent: self)
         }else {
-            home.tintColor = greycolor
-            discover.tintColor = greycolor
-            activity.tintColor = greycolor
-            profile.tintColor = UIColor(red: 136/255, green: 139/255, blue: 244/255, alpha: 1)
+            home.image = UIImage(named: "Home_light")
+            discover.image = UIImage(named: "Category_light")
+            activity.image = UIImage(named: "Notification_light")
+            profile.image = UIImage(named: "Profile")
+
 
             guard let profile = iClick.instantiateViewController(withIdentifier: "iClickProfileViewController") as? iClickProfileViewController else {return}
             contentView.addSubview(profile.view)

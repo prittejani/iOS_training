@@ -47,13 +47,13 @@ class StripePaymentViewController: UIViewController {
             }
         }
     }
-    func customAlert(title:String,message:String){
-        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
-
-        let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(saveAction)
-        present(alert, animated: true)
-    }
+//    func customAlert(title:String,message:String){
+//        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
+//
+//        let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        alert.addAction(saveAction)
+//        present(alert, animated: true)
+//    }
     func createCustomer() {
         let url = URL(string: "https://api.stripe.com/v1/customers")!
         

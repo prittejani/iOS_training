@@ -22,8 +22,7 @@ class LGSegmentOptions {
     var deselectedColor: (background: UIColor, text: UIColor) = (.clear, .black)
     
     /// Font of the segments' title labels
-    var font: UIFont = UIFont.systemFont(ofSize: 17,weight: .regular)
-    var selectedfont: UIFont = UIFont.systemFont(ofSize: 17,weight: .bold)
+    var font: UIFont = UIFont.systemFont(ofSize: 15,weight: .semibold)
     
     /// Background and text color of the segments' badges
     var badgeColor: (background: UIColor, text: UIColor) = (.red, .white)

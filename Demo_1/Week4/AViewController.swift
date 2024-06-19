@@ -52,11 +52,6 @@ class AViewController: UIViewController,UITableViewDelegate,UITableViewDataSourc
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-      
-    }
-   
     @IBAction func onBackTapped(_ sender: UIBarButtonItem) {
    
         navigationController?.popViewController( animated: true)
@@ -164,11 +159,7 @@ class AViewController: UIViewController,UITableViewDelegate,UITableViewDataSourc
         cell.userImage.clipsToBounds = true
         let url = URL(string: users[indexPath.row].profilePic)
         cell.userImage.sd_setImage(with: url, placeholderImage: UIImage(systemName: "person"))
- 
 //        cell.userImage.loadImage(fromURL: url!, placeHolderImage: "user")
-
-        
-        
         return cell
     }
 //    
@@ -195,12 +186,12 @@ class AViewController: UIViewController,UITableViewDelegate,UITableViewDataSourc
         deleteAction.backgroundColor = .red
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    func customAlert(title:String,message:String){
-        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
-        let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(saveAction)
-        present(alert, animated: true)
-    }
+//    func customAlert(title:String,message:String){
+//        let alert = UIAlertController(title: "\(title)", message: "\(message)", preferredStyle: .alert)
+//        let saveAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        alert.addAction(saveAction)
+//        present(alert, animated: true)
+//    }
 }
 
 

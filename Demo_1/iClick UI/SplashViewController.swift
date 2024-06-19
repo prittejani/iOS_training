@@ -8,12 +8,17 @@
 import UIKit
 
 
-class SplashViewController: UIViewController {
+class SplashViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        // Do any additional setup after loading the view.
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onViewTapped(_ :))))
+        
     }
-    
+    @objc func onViewTapped(_ sender:UIGestureRecognizer){
+        let vc = iClick.instantiateViewController(withIdentifier: "OnBoardingViewController") as! OnBoardingViewController
+        navigationController?.pushViewController(vc, animated: true)
+     print("view Tapped")
+    }
 }

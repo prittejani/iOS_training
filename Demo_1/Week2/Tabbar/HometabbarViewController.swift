@@ -9,6 +9,7 @@ import UIKit
 
 class HometabbarViewController: UIViewController {
 
+    @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,4 +19,14 @@ class HometabbarViewController: UIViewController {
 
     
 
+}
+extension HometabbarViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 50
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! testTableViewCell
+        cell.lbl.text = "Item \(indexPath.row)"
+        return cell
+    }
 }

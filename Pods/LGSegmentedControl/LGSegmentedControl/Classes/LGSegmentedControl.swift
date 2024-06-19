@@ -209,10 +209,5 @@ class LGSegmentedControl: UIControl, LGSegmentDelegate {
     public var deselectedTextColor: UIColor {
         get { return options.deselectedColor.text }
         set { options.deselectedColor.text = newValue; updateAppearance() }
-    } 
-    @IBInspectable
-    public var selectedTextFont: UIFont{
-        get { return options.selectedfont }
-        set { options.selectedfont = newValue; updateAppearance() }
     }
 }

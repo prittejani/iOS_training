@@ -64,8 +64,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Enables the map to render using Metal instead of OpenGL.
  *
- * The rendering might look very slightly different between renderers. The default is @c YES and
- * value must be updated before the services instance is initialized.
+ * The rendering might look slightly different between renderers. The default is @c YES and
+ * the value must be updated before the services instance is initialized.
  *
  * This property must be set from the main thread.
  */
